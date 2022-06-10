@@ -8,7 +8,9 @@ public class PlayerMaster : MonoBehaviour
     // since everything is dead in one hit, no need for floats as hp and damage
 
     [Header("Health")]
+    public int lives = 3;
     public int maxHp = 1;
+    public int health = 1;
 
     [Header("Movement")]
     public float moveSpeed = 5f;

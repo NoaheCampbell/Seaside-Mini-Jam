@@ -52,9 +52,19 @@ public class PlayerController : MonoBehaviour
     {
         attacking = true;
         player.canMove = false;
+
+        // animation
+        player.rotationObjs.transform.Translate(Vector3.right * 0.5f);
+
         player.meleeHitbox.SetActive(true);
+
         yield return new WaitForSeconds(player.meleeDuration);
+
         player.meleeHitbox.SetActive(false);
+
+        // animation
+        player.rotationObjs.transform.Translate(Vector3.right * -0.5f);
+
         player.canMove = true;
         attacking = false;
     }
@@ -62,7 +72,7 @@ public class PlayerController : MonoBehaviour
     // ranged attack
     void RangedAttack()
     {
-        if (player.canAttack)
+        if (player.canAttack && !attacking)
         {
             if (Input.GetButtonDown("Fire2") && !player.isRecharging)
             {
