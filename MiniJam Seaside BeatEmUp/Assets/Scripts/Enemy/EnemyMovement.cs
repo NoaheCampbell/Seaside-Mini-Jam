@@ -28,9 +28,6 @@ public class EnemyMovement : MonoBehaviour
             Vector3 rayDirection = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f));
             bool hitSomething = Physics.Raycast(transform.position, rayDirection, out hit, 500f);
 
-            // Draws raycasts in the same place as the random raycasts
-            Debug.DrawRay(transform.position, rayDirection * 500f, Color.red);
-
             if (hitSomething)
                 _objectTag = hit.transform.gameObject.tag;
 
@@ -89,8 +86,6 @@ public class EnemyMovement : MonoBehaviour
                 transform.position = Vector3.MoveTowards(transform.position, _targetPosition, _speed);
                 transform.rotation = Quaternion.Slerp(transform.rotation, _targetRotation, Time.deltaTime * _speed);
             }
-
-            // 
         }
             
     }
