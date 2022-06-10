@@ -13,10 +13,14 @@ public class EnemyMovement : MonoBehaviour
     private EnemyAttacks _enemyAttacks;
     private float _timer;
     public float attackDuration;
-    public bool recentlyAttacked;
-    private float _timeSinceAttack;
-    private float _attackCooldown;
+    public bool recentlyAttackedMelee;
+    public bool recentlyAttackedRanged;
+    private float _timeSinceMeleeAttack;
+    private float _timeSinceRangedAttack;
+    private float _attackMeleeCooldown;
+    private float _attackRangedCooldown;
     private bool _shouldMoveBack;
+    private EnemyMaster enemy;
 
     // Start is called before the first frame update
     void Start()
@@ -24,9 +28,12 @@ public class EnemyMovement : MonoBehaviour
         _enemyAttacks = GetComponent<EnemyAttacks>();
         _timer = 0;
         attackDuration = 1f;
-        recentlyAttacked = false;
-        _attackCooldown = 5f;
+        recentlyAttackedMelee = false;
+        recentlyAttackedRanged = false;
+        _attackMeleeCooldown = 5f;
+        _attackRangedCooldown = 0.5f;
         _shouldMoveBack = false;
+        enemy = GetComponent<EnemyMaster>();
     }
 
     // Update is called once per frame
@@ -78,15 +85,18 @@ public class EnemyMovement : MonoBehaviour
                 transform.rotation = Quaternion.Slerp(transform.rotation, _targetRotation, Time.deltaTime * _speed);
             }
 
-            if (distance <= 0.1f && !recentlyAttacked)
+            // If the enemy is less than 0.1 units away from the player and hasn't recently attacked, attack and
+            // set recentlyAttacked to true while moving back
+            if (distance <= 0.1f && !recentlyAttackedMelee)
             {
                 _enemyAttacks.MeleeAnimation(_targetPosition);
 
                 transform.position = Vector3.MoveTowards(transform.position, _targetPosition, -_speed * 2);
                 transform.rotation = Quaternion.Slerp(transform.rotation, _targetRotation, Time.deltaTime * _speed);
-                recentlyAttacked = true;
+                recentlyAttackedMelee = true;
                 _shouldMoveBack = true;
             }
+            // If the enemy has recently attacked, check to see if it should move back
             else if (_shouldMoveBack)
             {
                 transform.position = Vector3.MoveTowards(transform.position, _targetPosition, -_speed * 2);
@@ -99,10 +109,12 @@ public class EnemyMovement : MonoBehaviour
             }
 
             // If the enemy is between 30 and 50 units from the player, back away even more (possible switch to ranged mode later)
-            if (distance > 30f && distance < 50f)
+            if (distance > 30f && distance < 50f && !recentlyAttackedRanged)
             {
+                _enemyAttacks.RangedAnimation();
                 transform.position = Vector3.MoveTowards(transform.position, _targetPosition, -_speed);
                 transform.rotation = Quaternion.Slerp(transform.rotation, _targetRotation, Time.deltaTime * _speed);
+                recentlyAttackedRanged = true;
             }
 
             // If the enemy is more than 80 units from the player, move towards the player
@@ -113,12 +125,22 @@ public class EnemyMovement : MonoBehaviour
             }
         }
 
+        // Adds to all the timers
         _timer += Time.deltaTime;
-        _timeSinceAttack += Time.deltaTime;
-        if (_timeSinceAttack >= _attackCooldown)
+        _timeSinceMeleeAttack += Time.deltaTime;
+        _timeSinceRangedAttack += Time.deltaTime;
+
+        // Checks to see if the enemy should attack again
+        if (_timeSinceMeleeAttack >= _attackMeleeCooldown)
         {
-            recentlyAttacked = false;
+            recentlyAttackedMelee = false;
         }
+
+        if (_timeSinceRangedAttack >= _attackRangedCooldown)
+        {
+            recentlyAttackedRanged = false;
+        }
+
     }
 }
 

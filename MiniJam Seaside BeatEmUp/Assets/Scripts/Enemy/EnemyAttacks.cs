@@ -6,6 +6,7 @@ public class EnemyAttacks : MonoBehaviour
 {
     private Vector3 _targetPosition;
     private float _speed;
+    public EnemyMaster enemy;
 
     // Start is called before the first frame update
     void Start()
@@ -23,15 +24,26 @@ public class EnemyAttacks : MonoBehaviour
     {
         // Start the melee animation
         _targetPosition = targetPosition;
-        StartCoroutine(Waiter());
+        StartCoroutine(Melee());
     }
 
-     IEnumerator Waiter()
+    public void RangedAnimation()
+    {
+        // Start the ranged animation
+        StartCoroutine(Ranged());
+    }
+
+     IEnumerator Melee()
     {
         transform.position = Vector3.MoveTowards(transform.position, _targetPosition, _speed);
         yield return new WaitForSeconds(2f);
         transform.position = Vector3.MoveTowards(transform.position, _targetPosition, -_speed);
     }
 
+    IEnumerator Ranged()
+    {
+        Instantiate(enemy.projectile);
+        yield return new WaitForSeconds(1f);
+    }
 
 }
