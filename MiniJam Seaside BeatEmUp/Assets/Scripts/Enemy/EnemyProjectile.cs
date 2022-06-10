@@ -17,8 +17,7 @@ public class EnemyProjectile : MonoBehaviour
         transform.position = GameObject.FindWithTag("EnemyProjectileSpawn").transform.position;
         gameObject.transform.parent = GameObject.FindWithTag("ProjectileParent").transform;
 
-        rb = gameObject.GetComponent<Rigidbody>();
-        Debug.Log(rb);
+        rb = gameObject.GetComponent<Rigidbody>();        
     }
 
     // Update is called once per frame
