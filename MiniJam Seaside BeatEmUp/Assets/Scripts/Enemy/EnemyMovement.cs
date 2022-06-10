@@ -13,6 +13,10 @@ public class EnemyMovement : MonoBehaviour
     private EnemyAttacks _enemyAttacks;
     private float _timer;
     public float attackDuration;
+    public bool recentlyAttacked;
+    private float _timeSinceAttack;
+    private float _attackCooldown;
+    private bool _shouldMoveBack;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +25,9 @@ public class EnemyMovement : MonoBehaviour
         _speed = 0.05f;
         _timer = 0;
         attackDuration = 1f;
+        recentlyAttacked = false;
+        _attackCooldown = 5f;
+        _shouldMoveBack = false;
     }
 
     // Update is called once per frame
@@ -72,19 +79,24 @@ public class EnemyMovement : MonoBehaviour
                 transform.rotation = Quaternion.Slerp(transform.rotation, _targetRotation, Time.deltaTime * _speed);
             }
 
-            // Creates a random number between 0 and 1 to determine if the enemy should attack
-            float randomNumber = Random.Range(0f, 1f);
-            if (distance <= 5f && randomNumber < 0.25f)
+            if (distance <= 5f && !recentlyAttacked)
             {
                 _enemyAttacks.MeleeAnimation(_targetPosition);
 
                 transform.position = Vector3.MoveTowards(transform.position, _targetPosition, -_speed * 2);
                 transform.rotation = Quaternion.Slerp(transform.rotation, _targetRotation, Time.deltaTime * _speed);
+                recentlyAttacked = true;
+                _shouldMoveBack = true;
             }
-            else if (distance <= 5f)
+            else if (_shouldMoveBack)
             {
-                transform.position = Vector3.MoveTowards(transform.position, _targetPosition, -_speed * 400);
+                transform.position = Vector3.MoveTowards(transform.position, _targetPosition, -_speed * 2);
                 transform.rotation = Quaternion.Slerp(transform.rotation, _targetRotation, Time.deltaTime * _speed);
+
+                if (distance > 30f)
+                {
+                    _shouldMoveBack = false;
+                }
             }
 
             // If the enemy is between 30 and 50 units from the player, back away even more (possible switch to ranged mode later)
@@ -103,6 +115,11 @@ public class EnemyMovement : MonoBehaviour
         }
 
         _timer += Time.deltaTime;
+        _timeSinceAttack += Time.deltaTime;
+        if (_timeSinceAttack >= _attackCooldown)
+        {
+            recentlyAttacked = false;
+        }
     }
 }
 
