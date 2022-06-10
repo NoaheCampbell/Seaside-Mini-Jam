@@ -39,6 +39,9 @@ public class EnemyHealth : MonoBehaviour
     // function to die
     void Death()
     {
+        // update enemy count
+        GameObject.Find("GameManager").GetComponent<EnemyManager>().enemyCount -= 1;
+
         Destroy(gameObject);
     }
 }
