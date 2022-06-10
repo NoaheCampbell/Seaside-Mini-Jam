@@ -23,7 +23,6 @@ public class Projectile : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody>();
 
         GetDirection();
-        //direction = GameObject.FindWithTag("Player").GetComponent<PlayerMaster>().rotationObjs.transform.TransformDirection(new Vector3(0, 0, projectileSpeed));
     }
 
     private void Update()
