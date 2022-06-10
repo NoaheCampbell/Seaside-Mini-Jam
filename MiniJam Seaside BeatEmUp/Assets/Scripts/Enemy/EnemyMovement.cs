@@ -45,7 +45,7 @@ public class EnemyMovement : MonoBehaviour
 
             RaycastHit hit;
             Vector3 rayDirection = new Vector3(Random.Range(-1f, 1f), Random.Range(-0.3f, 0.3f), Random.Range(-1f, 1f));
-            bool hitSomething = Physics.Raycast(transform.position, rayDirection, out hit, 200f);
+            bool hitSomething = Physics.Raycast(transform.position, rayDirection, out hit, 100f);
 
             if (hitSomething)
                 _objectTag = hit.transform.gameObject.tag;
@@ -117,8 +117,8 @@ public class EnemyMovement : MonoBehaviour
                 recentlyAttackedRanged = true;
             }
 
-            // If the enemy is more than 80 units from the player, move towards the player
-            if (distance > 80f)
+            // If the enemy is more than 60 units from the player, move towards the player
+            if (distance > 60f)
             {
                 transform.position = Vector3.MoveTowards(transform.position, _targetPosition, _speed);
                 transform.rotation = Quaternion.Slerp(transform.rotation, _targetRotation, Time.deltaTime * _speed);
