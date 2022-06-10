@@ -17,11 +17,14 @@ public class PlayerMaster : MonoBehaviour
 
     [Header("Movement")]
     public float moveSpeed = 5f;
+    public float dashSpeed = 10f;
+    public float dashCooldown = 2f;
     public float jumpHeight = 1f;
     public float gravForce = -9.81f;
     public GameObject rotationObjs; // used to rotate
     [System.NonSerialized] public float lookDirection = 0; // used for debugging and firing projectiles (0 - up; 0.5 - up & right; 1 - right; 1.5 - down & right; 2 - down; 2.5 - downa nd left; 3 - left; 3.5 - up and left) 
     [System.NonSerialized] public bool canMove = true;
+    [System.NonSerialized] public bool canDash = true;
     [System.NonSerialized] public bool canAttack = true;
     [System.NonSerialized] public bool isGrounded = true;
 

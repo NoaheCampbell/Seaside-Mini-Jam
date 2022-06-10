@@ -40,6 +40,13 @@ public class Projectile : MonoBehaviour
 
         }
 
+        if (collision.gameObject.tag == "BreakableObj")
+        {
+            // do damage
+            BreakableObject obj = collision.gameObject.GetComponent(typeof(BreakableObject)) as BreakableObject;
+            obj.HitBreakableObj(player.rangedDmg);
+        }
+
         // destroy object
         Destroy(gameObject);
     }

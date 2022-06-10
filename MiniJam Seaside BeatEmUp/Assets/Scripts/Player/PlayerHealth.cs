@@ -18,7 +18,7 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
         player.health -= damage;
-        Debug.Log("take damage");
+        //Debug.Log("take damage");
 
         CheckHealth();
     }
@@ -26,7 +26,7 @@ public class PlayerHealth : MonoBehaviour
     // function to check player health
     void CheckHealth()
     {
-        Debug.Log("Check Health");
+        //Debug.Log("Check Health");
         if (player.health == 0)
         {
             Death();
@@ -36,7 +36,7 @@ public class PlayerHealth : MonoBehaviour
     // function to die
     void Death()
     {
-        Debug.Log("Died");
+        //Debug.Log("Died");
 
         // restrict player movement
         player.canMove = false;

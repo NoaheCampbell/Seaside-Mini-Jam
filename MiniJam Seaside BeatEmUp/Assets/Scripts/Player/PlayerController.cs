@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         Jump();
+        Dash();
 
         MeleeAttack();
         RangedAttack();
@@ -149,6 +150,36 @@ public class PlayerController : MonoBehaviour
 
         // move
         controller.Move(playerVelocity * Time.deltaTime);
+    }
+
+    // Dash Function
+    void Dash()
+    {
+        if (Input.GetButtonDown("Dash") && player.canMove && player.canDash)
+        {
+            StartCoroutine(DashAbility());
+        }
+    }
+
+    // dash coroutine
+    IEnumerator DashAbility()
+    {
+        float startMoveSpeed = player.moveSpeed;
+        player.moveSpeed = player.dashSpeed;
+
+        yield return new WaitForSeconds(.1f);
+
+        player.moveSpeed = startMoveSpeed;
+
+        StartCoroutine(DashCooldown());
+    }
+
+    // dash cooldown 
+    IEnumerator DashCooldown()
+    {
+        player.canDash = false;
+        yield return new WaitForSeconds(player.dashCooldown);
+        player.canDash = true;
     }
 
     // rotate player

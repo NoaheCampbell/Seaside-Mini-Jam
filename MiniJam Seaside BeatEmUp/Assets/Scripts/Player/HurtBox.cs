@@ -18,7 +18,7 @@ public class HurtBox : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            Debug.Log("Collided with enemy");
+            //Debug.Log("Collided with enemy");
             playerHealth.TakeDamage(1);
         }
     }
