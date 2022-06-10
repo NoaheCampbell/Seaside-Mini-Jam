@@ -17,6 +17,7 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
         player.health -= damage;
+        Debug.Log("take damage");
 
         CheckHealth();
     }
@@ -24,15 +25,17 @@ public class PlayerHealth : MonoBehaviour
     // function to check player health
     void CheckHealth()
     {
+        Debug.Log("Check Health");
         if (player.health == 0)
         {
-            Death();
+            StartCoroutine(Death());
         }
     }
 
     // function to die
-    void Death()
+    IEnumerator Death()
     {
+        Debug.Log("Died");
         // remove a life
         player.lives -= 1;
 
@@ -43,6 +46,10 @@ public class PlayerHealth : MonoBehaviour
         }
 
         // respawn player
+        player.canMove = false;
+        yield return new WaitForSeconds(1f);
         player.transform.position = GameObject.FindWithTag("Respawn").transform.position;
+        player.canMove = true;
+        player.health = player.maxHp;
     }
 }
