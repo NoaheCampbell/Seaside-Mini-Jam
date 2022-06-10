@@ -14,6 +14,7 @@ public class BossController : MonoBehaviour
     private float timeSinceLastJump;
     public bool recentlyDashed;
     private float timeSinceLastDash;
+    public bool isDashing;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +25,7 @@ public class BossController : MonoBehaviour
         bossMaster.EnemyType(gameObject.tag);
 
         bossMovement = gameObject.GetComponent<BossMovement>();
+        bossAttacks = gameObject.GetComponent<BossAttacks>();
 
         boss = gameObject;
         recentlyJumped = false;
@@ -31,6 +33,7 @@ public class BossController : MonoBehaviour
         timeSinceLastJump = 0;
         recentlyDashed = false;
         timeSinceLastDash = 0;
+        isDashing = false;
     }
 
     // Update is called once per frame
@@ -87,6 +90,7 @@ public class BossController : MonoBehaviour
     IEnumerator DashAnimation()
     {
         recentlyDashed = true;
+        isDashing = true;
 
         // Makes the boss dash towards the player
         var timerLeft = 50f;
@@ -107,14 +111,17 @@ public class BossController : MonoBehaviour
                 yield break;
             }
 
+            if (bossMovement.targetDistance < 5)
+            {
+                bossAttacks.MeleeAttack();
+            }
+
             timerLeft -= Time.deltaTime;
         }
 
-        // Attacks as the boss passes by the player
-        bossAttacks.MeleeAttack();
 
         bossMovement.canRotate = true;
-
+        isDashing = false;
     }
 
 
@@ -131,6 +138,8 @@ public class BossController : MonoBehaviour
             timerLeft -= 0.5f;
         }
 
+        // Shoots a projectile at the player after the boss lands
+        bossAttacks.RangedAttack();
     }
     
 }

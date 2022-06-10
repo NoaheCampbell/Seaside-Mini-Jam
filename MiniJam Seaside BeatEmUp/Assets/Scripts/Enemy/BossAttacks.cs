@@ -6,6 +6,7 @@ public class BossAttacks : MonoBehaviour
 {
     private EnemyMaster bossMaster;
     private GameObject boss;
+    private BossController bossController;
     private bool recentlyAttackedMelee;
     private bool recentlyAttackedRanged;
     private float timer;
@@ -17,6 +18,7 @@ public class BossAttacks : MonoBehaviour
     {
         bossMaster = gameObject.GetComponent<EnemyMaster>();
         boss = gameObject;
+        bossController = gameObject.GetComponent<BossController>();
         recentlyAttackedMelee = false;
         recentlyAttackedRanged = false;
         timer = 0;
@@ -51,6 +53,7 @@ public class BossAttacks : MonoBehaviour
         {
            StartCoroutine(Melee());
         }
+
     }
 
     public void RangedAttack()
@@ -59,6 +62,7 @@ public class BossAttacks : MonoBehaviour
         {
             StartCoroutine(Ranged());
         }
+
     }
 
     IEnumerator Melee()
@@ -67,9 +71,13 @@ public class BossAttacks : MonoBehaviour
         lastAttack = "melee";
 
         // Start the melee animation
-        boss.transform.position = Vector3.MoveTowards(boss.transform.position, boss.transform.position + boss.transform.forward, 0.05f);
-        yield return new WaitForSeconds(2f);
-        boss.transform.position = Vector3.MoveTowards(boss.transform.position, boss.transform.position - boss.transform.forward, 0.05f);
+
+        if (!bossController.isDashing)
+        {
+             boss.transform.position = Vector3.MoveTowards(boss.transform.position, boss.transform.position + boss.transform.forward, 0.05f);
+            yield return new WaitForSeconds(2f);
+            boss.transform.position = Vector3.MoveTowards(boss.transform.position, boss.transform.position - boss.transform.forward, 0.05f);
+        }
     }
 
     IEnumerator Ranged()

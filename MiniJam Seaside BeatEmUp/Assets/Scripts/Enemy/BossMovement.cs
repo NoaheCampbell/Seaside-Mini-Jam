@@ -56,7 +56,6 @@ public class BossMovement : MonoBehaviour
         {
             bossController.Jump();
             boss.transform.position = Vector3.MoveTowards(boss.transform.position, targetPosition, boss.speedWhileJumping * Time.deltaTime);
-            bossAttacks.RangedAttack();
         }
 
         // If the player is less than 10 units away, dash forward and use a melee attack
@@ -64,7 +63,6 @@ public class BossMovement : MonoBehaviour
         {
             bossController.Dash();
             boss.transform.position = Vector3.MoveTowards(boss.transform.position, targetPosition, boss.dashSpeed * Time.deltaTime);
-            bossAttacks.MeleeAttack();
         }
     }
 }
