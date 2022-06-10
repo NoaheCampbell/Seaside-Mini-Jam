@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 move;
 
     private bool moving = false;
+    private bool attacking = false;
 
     // Start is called before the first frame update
     void Start()
@@ -37,10 +38,25 @@ public class PlayerController : MonoBehaviour
     // melee attack
     void MeleeAttack()
     {
-        if (player.canAttack)
+        if (player.canAttack && !attacking)
         {
-
+            if (Input.GetButtonDown("Fire1"))
+            {
+                StartCoroutine(Melee());
+            }
         }
+    }
+
+    // melee coroutine
+    IEnumerator Melee()
+    {
+        attacking = true;
+        player.canMove = false;
+        player.meleeHitbox.SetActive(true);
+        yield return new WaitForSeconds(player.meleeDuration);
+        player.meleeHitbox.SetActive(false);
+        player.canMove = true;
+        attacking = false;
     }
 
     // ranged attack
@@ -48,8 +64,23 @@ public class PlayerController : MonoBehaviour
     {
         if (player.canAttack)
         {
+            if (Input.GetButtonDown("Fire2") && !player.isRecharging)
+            {
+                // spawn projectile
+                Instantiate(player.rangedProjectile);
 
+                // start recharge coroutine
+                StartCoroutine(RangedRecharge());
+            }
         }
+    }
+
+    // ranged attack recharge
+    IEnumerator RangedRecharge()
+    {
+        player.isRecharging = true;
+        yield return new WaitForSeconds(player.rangeCooldown);
+        player.isRecharging = false;
     }
 
     #endregion
@@ -120,7 +151,7 @@ public class PlayerController : MonoBehaviour
             if (move.z > 0 && move.x == 0)
             {
                 // Up direction
-                player.playerArt.transform.rotation = Quaternion.Euler(0, -90, 0);
+                player.rotationObjs.transform.rotation = Quaternion.Euler(0, -90, 0);
 
                 // set direction
                 player.lookDirection = 0;
@@ -128,7 +159,7 @@ public class PlayerController : MonoBehaviour
             else if (move.z > 0 && move.x > 0)
             {
                 // Up & right direction
-                player.playerArt.transform.rotation = Quaternion.Euler(0, -45, 0);
+                player.rotationObjs.transform.rotation = Quaternion.Euler(0, -45, 0);
 
                 // set direction
                 player.lookDirection = .5f;
@@ -136,7 +167,7 @@ public class PlayerController : MonoBehaviour
             else if (move.z == 0 && move.x > 0)
             {
                 // right direction
-                player.playerArt.transform.rotation = Quaternion.Euler(0, 0, 0);
+                player.rotationObjs.transform.rotation = Quaternion.Euler(0, 0, 0);
 
                 // set direction
                 player.lookDirection = 1f;
@@ -144,7 +175,7 @@ public class PlayerController : MonoBehaviour
             else if (move.z < 0 && move.x > 0)
             {
                 // down & right direction
-                player.playerArt.transform.rotation = Quaternion.Euler(0, 45, 0);
+                player.rotationObjs.transform.rotation = Quaternion.Euler(0, 45, 0);
 
                 // set direction
                 player.lookDirection = 1.5f;
@@ -152,7 +183,7 @@ public class PlayerController : MonoBehaviour
             else if (move.z < 0 && move.x == 0)
             {
                 // down direction
-                player.playerArt.transform.rotation = Quaternion.Euler(0, 90, 0);
+                player.rotationObjs.transform.rotation = Quaternion.Euler(0, 90, 0);
 
                 // set direction
                 player.lookDirection = 2f;
@@ -160,7 +191,7 @@ public class PlayerController : MonoBehaviour
             else if (move.z < 0 && move.x < 0)
             {
                 // down & left direction
-                player.playerArt.transform.rotation = Quaternion.Euler(0, 135, 0);
+                player.rotationObjs.transform.rotation = Quaternion.Euler(0, 135, 0);
 
                 // set direction
                 player.lookDirection = 2.5f;
@@ -168,7 +199,7 @@ public class PlayerController : MonoBehaviour
             else if (move.z == 0 && move.x < 0)
             {
                 // left direction
-                player.playerArt.transform.rotation = Quaternion.Euler(0, 180, 0);
+                player.rotationObjs.transform.rotation = Quaternion.Euler(0, 180, 0);
 
                 // set direction
                 player.lookDirection = 3f;
@@ -176,7 +207,7 @@ public class PlayerController : MonoBehaviour
             else if (move.z > 0 && move.x < 0)
             {
                 // up & left direction
-                player.playerArt.transform.rotation = Quaternion.Euler(0, -135, 0);
+                player.rotationObjs.transform.rotation = Quaternion.Euler(0, -135, 0);
 
                 // set direction
                 player.lookDirection = 3.5f;
