@@ -425,6 +425,7 @@ GameObject:
   - component: {fileID: 536824309}
   - component: {fileID: 536824312}
   - component: {fileID: 536824313}
+  - component: {fileID: 536824314}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Player
@@ -541,7 +542,6 @@ MonoBehaviour:
   lives: 3
   maxHp: 1
   health: 1
-  playerArt: {fileID: 131847156}
   moveSpeed: 5
   jumpHeight: 1
   gravForce: -9.81
@@ -597,6 +597,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 540f3780743de16489aa33778cfe0b73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &536824314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536824304}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd6c6c7f5dc294a4497759f0e4bbd092, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &551336876

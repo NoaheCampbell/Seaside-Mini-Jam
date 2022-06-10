@@ -12,9 +12,6 @@ public class PlayerMaster : MonoBehaviour
     public int maxHp = 1;
     public int health = 1;
 
-    [Header("Art")]
-    public GameObject playerArt;
-
     [Header("Movement")]
     public float moveSpeed = 5f;
     public float jumpHeight = 1f;
