@@ -72,13 +72,13 @@ public class EnemyMovement : MonoBehaviour
         if (playerIsHit)
         {
             // If the enemy is under 30 units away from the player, move closer to the player
-            if (distance < 30f && distance > 5f)
+            if (distance < 30f && distance > 0.1f)
             {
                 transform.position = Vector3.MoveTowards(transform.position, _targetPosition, _speed);
                 transform.rotation = Quaternion.Slerp(transform.rotation, _targetRotation, Time.deltaTime * _speed);
             }
 
-            if (distance <= 5f && !recentlyAttacked)
+            if (distance <= 0.1f && !recentlyAttacked)
             {
                 _enemyAttacks.MeleeAnimation(_targetPosition);
 
