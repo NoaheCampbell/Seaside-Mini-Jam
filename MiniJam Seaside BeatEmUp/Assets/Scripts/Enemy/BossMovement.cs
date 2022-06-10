@@ -8,11 +8,9 @@ public class BossMovement : MonoBehaviour
     private BossController bossController;
     private BossAttacks bossAttacks;
     public float targetDistance;
-    private Vector3 targetPosition;
+    public Vector3 targetPosition;
     private Quaternion targetRotation;
-    private bool recentlyMeleeAttacked;
-    private bool recentlyRangedAttacked;
-
+    public bool canRotate;
 
     // Start is called before the first frame update
     void Start()
@@ -20,8 +18,7 @@ public class BossMovement : MonoBehaviour
         boss = gameObject.GetComponent<EnemyMaster>();
         bossController = gameObject.GetComponent<BossController>();
         bossAttacks = gameObject.GetComponent<BossAttacks>();
-        recentlyMeleeAttacked = false;
-        recentlyRangedAttacked = false;
+        canRotate = true;
     }
 
     // Update is called once per frame
@@ -48,12 +45,26 @@ public class BossMovement : MonoBehaviour
             }
         }
 
-        // If the player is more than 50 units away, jump towards the player and use a ranged attack
-        if (targetDistance > 50)
+        // If the target rotation is not null, rotate towards the target rotation
+        if (targetRotation != null && canRotate)
+        { 
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * boss.rotationSpeed);
+        }
+
+        // If the player is more than 40 units away, jump towards the player and use a ranged attack
+        if (targetDistance > 40)
         {
             bossController.Jump();
             boss.transform.position = Vector3.MoveTowards(boss.transform.position, targetPosition, boss.speedWhileJumping * Time.deltaTime);
             bossAttacks.RangedAttack();
+        }
+
+        // If the player is less than 10 units away, dash forward and use a melee attack
+        else if (targetDistance < 10)
+        {
+            bossController.Dash();
+            boss.transform.position = Vector3.MoveTowards(boss.transform.position, targetPosition, boss.dashSpeed * Time.deltaTime);
+            bossAttacks.MeleeAttack();
         }
     }
 }

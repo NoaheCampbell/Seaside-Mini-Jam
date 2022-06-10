@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyProjectile : MonoBehaviour
 {
     private EnemyMaster enemy;
-    private Rigidbody rb;
+    public Rigidbody rb;
 
     [HideInInspector] public float damage = 1;
     public float projectileSpeed = 1;
@@ -13,11 +13,11 @@ public class EnemyProjectile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        enemy = GameObject.FindWithTag("Enemy").GetComponent<EnemyMaster>();
+        enemy = gameObject.GetComponent<EnemyMaster>();
         transform.position = GameObject.FindWithTag("EnemyProjectileSpawn").transform.position;
         gameObject.transform.parent = GameObject.FindWithTag("ProjectileParent").transform;
 
-        rb = gameObject.GetComponent<Rigidbody>();        
+        // rb = gameObject.GetComponent<Rigidbody>();        
     }
 
     // Update is called once per frame

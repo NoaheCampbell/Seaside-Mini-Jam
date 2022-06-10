@@ -17,7 +17,9 @@ public class EnemyMaster : MonoBehaviour
     public bool isGrounded = true;
     public float gravForce = -1f; 
     public float jumpForce = 1f;   
-    public float speedWhileJumping = 4f; 
+    public float speedWhileJumping = 4f;
+    public float dashSpeed;
+    public float rotationSpeed = 5f;
 
     // Holds all enemy information related to combat hitboxes, damage, and cooldowns
     [Header("Combat")]
@@ -26,6 +28,7 @@ public class EnemyMaster : MonoBehaviour
     public int rangedDmg = 1;
     public float rangeCooldown = 1f;
     public GameObject projectile;
+    public string combatPreference;
 
     public void EnemyType(string tag)
     {
@@ -38,7 +41,24 @@ public class EnemyMaster : MonoBehaviour
             canBeDamaged = false;
             jumpForce = 3f;
             speedWhileJumping = 10f;
+            dashSpeed = 7f;
         }
         
+    }
+
+    public void DetermineCombatType()
+    {
+        if (gameObject.name.Contains("Melee"))
+        {
+           combatPreference = "melee";
+        }
+        else if (gameObject.name.Contains("Ranged"))
+        {
+            combatPreference = "ranged";
+        }
+        else
+        {
+           combatPreference = "hybrid";
+        }
     }
 }

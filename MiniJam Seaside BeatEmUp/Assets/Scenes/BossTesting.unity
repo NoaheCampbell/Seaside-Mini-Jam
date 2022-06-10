@@ -391,6 +391,37 @@ Transform:
   m_Father: {fileID: 1339128060}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &579315518
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 579315519}
+  m_Layer: 0
+  m_Name: EnemyProjectileSpawn
+  m_TagString: EnemyProjectileSpawn
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &579315519
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 579315518}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1339128060}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &589643641
 GameObject:
   m_ObjectHideFlags: 0
@@ -634,6 +665,7 @@ GameObject:
   - component: {fileID: 1339128055}
   - component: {fileID: 1339128054}
   - component: {fileID: 1339128053}
+  - component: {fileID: 1339128061}
   m_Layer: 0
   m_Name: Boss Test
   m_TagString: Boss
@@ -659,12 +691,16 @@ MonoBehaviour:
   moveSpeed: 2
   isGrounded: 1
   gravForce: -9.81
-  jumpHeight: 1
+  jumpForce: 1
+  speedWhileJumping: 4
+  dashSpeed: 0
+  rotationSpeed: 5
   meleeDmg: 5
   meleeDuration: 1
   rangedDmg: 1
   rangeCooldown: 1
   projectile: {fileID: 864788804335236612, guid: ee31e83ebce82488b88de52a4184e2f3, type: 3}
+  combatPreference: 
 --- !u!114 &1339128054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -695,6 +731,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetDistance: 0
+  canRotate: 0
 --- !u!114 &1339128056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -707,6 +744,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a4bf569b9dcf4d7fbf8d0623aef2a2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  recentlyJumped: 0
+  recentlyDashed: 0
 --- !u!114 &1339128057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -782,9 +821,26 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 414190039}
+  - {fileID: 579315519}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &1339128061
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1339128052}
+  serializedVersion: 2
+  m_Mass: 0.0000001
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1480041043
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class EnemyAttacks : MonoBehaviour
 {
-    private Vector3 _targetPosition;
-    private float _speed;
+    private Vector3 targetPosition;
+    private float speed;
     public EnemyMaster enemy;
 
     // Start is called before the first frame update
     void Start()
     {
-        _speed = 0.05f;
+        speed = 0.05f;
     }
 
     // Update is called once per frame
@@ -20,10 +20,10 @@ public class EnemyAttacks : MonoBehaviour
 
     }
 
-    public void MeleeAnimation(Vector3 targetPosition)
+    public void MeleeAnimation(Vector3 targetPos)
     {
         // Start the melee animation
-        _targetPosition = targetPosition;
+       targetPosition = targetPos;
         StartCoroutine(Melee());
     }
 
@@ -35,9 +35,9 @@ public class EnemyAttacks : MonoBehaviour
 
      IEnumerator Melee()
     {
-        transform.position = Vector3.MoveTowards(transform.position, _targetPosition, _speed);
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed);
         yield return new WaitForSeconds(2f);
-        transform.position = Vector3.MoveTowards(transform.position, _targetPosition, -_speed);
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, -speed);
     }
 
     IEnumerator Ranged()
