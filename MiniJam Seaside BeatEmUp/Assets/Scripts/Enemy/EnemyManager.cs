@@ -8,5 +8,5 @@ public class EnemyManager : MonoBehaviour
     public int maxEnemies = 10;
     public int enemyCount = 0;
 
-    public List<GameObject> enemies = new List<GameObject>();
+    public List<GameObject> enemyPrefabs = new List<GameObject>();
 }
