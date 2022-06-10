@@ -67,7 +67,7 @@ public class BossController : MonoBehaviour
 
     public void Jump()
     {
-        if (!recentlyJumped && bossMaster.isGrounded)
+        if (!recentlyJumped && bossMaster.isGrounded && !bossAttacks.isAttacking)
         {
             recentlyJumped = true;
             
@@ -78,13 +78,19 @@ public class BossController : MonoBehaviour
 
     public void Dash()
     {
-        if (!recentlyDashed && bossMaster.isGrounded)
+        if (!recentlyDashed && bossMaster.isGrounded && !bossAttacks.isAttacking)
         {
             recentlyJumped = true;
 
             // Start the jump animation
             StartCoroutine(DashAnimation());
         }
+    }
+
+    public void Spin()
+    {
+        // Start the spin animation
+        StartCoroutine(SpinAnimation());
     }
 
     IEnumerator DashAnimation()
@@ -140,6 +146,19 @@ public class BossController : MonoBehaviour
 
         // Shoots a projectile at the player after the boss lands
         bossAttacks.RangedAttack();
+    }
+
+    IEnumerator SpinAnimation()
+    {
+        // Makes the boss spin around for a few seconds
+        var timerLeft = 5f;
+
+        while (timerLeft > 0)
+        {
+            boss.transform.Rotate(0, 0.5f, 0);
+            yield return new WaitForSeconds(0.01f);
+            timerLeft -= 0.5f;
+        }
     }
     
 }

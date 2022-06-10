@@ -19,7 +19,7 @@ public class EnemyMaster : MonoBehaviour
     public float jumpForce = 1f;   
     public float speedWhileJumping = 4f;
     public float dashSpeed;
-    public float rotationSpeed = 5f;
+    public float rotationSpeed = 30f;
 
     // Holds all enemy information related to combat hitboxes, damage, and cooldowns
     [Header("Combat")]
@@ -29,6 +29,9 @@ public class EnemyMaster : MonoBehaviour
     public float rangeCooldown = 1f;
     public GameObject projectile;
     public string combatPreference;
+    public float meleeCooldown = 10f;
+    public float rangedCooldown = 10f;
+    public float specialCooldown = 25f;
 
     public void EnemyType(string tag)
     {

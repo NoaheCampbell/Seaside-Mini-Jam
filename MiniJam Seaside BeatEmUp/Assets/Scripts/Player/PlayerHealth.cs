@@ -17,7 +17,7 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
         player.health -= damage;
-        Debug.Log("take damage");
+        // Debug.Log("take damage");
 
         CheckHealth();
     }
@@ -25,8 +25,8 @@ public class PlayerHealth : MonoBehaviour
     // function to check player health
     void CheckHealth()
     {
-        Debug.Log("Check Health");
-        if (player.health == 0)
+        // Debug.Log("Check Health");
+        if (player.health <= 0)
         {
             StartCoroutine(Death());
         }
@@ -35,7 +35,7 @@ public class PlayerHealth : MonoBehaviour
     // function to die
     IEnumerator Death()
     {
-        Debug.Log("Died");
+        // Debug.Log("Died");
         // remove a life
         player.lives -= 1;
 

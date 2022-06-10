@@ -7,11 +7,16 @@ public class BossAttacks : MonoBehaviour
     private EnemyMaster bossMaster;
     private GameObject boss;
     private BossController bossController;
+    private BossMovement bossMovement;
     private bool recentlyAttackedMelee;
     private bool recentlyAttackedRanged;
     private float timer;
-    private float timeSinceLastAttack;
-    private string lastAttack;
+    private float timeSinceLastMeleeAttack;
+    private float timeSinceLastRangedAttack;
+    private float timeSinceLastSpecial;
+    private bool recentlyAttackedSpecial;
+    public bool isUsingSpecial;
+    public bool isAttacking;
 
     // Start is called before the first frame update
     void Start()
@@ -19,10 +24,16 @@ public class BossAttacks : MonoBehaviour
         bossMaster = gameObject.GetComponent<EnemyMaster>();
         boss = gameObject;
         bossController = gameObject.GetComponent<BossController>();
+        bossMovement = gameObject.GetComponent<BossMovement>();
         recentlyAttackedMelee = false;
         recentlyAttackedRanged = false;
+        recentlyAttackedSpecial = false;
         timer = 0;
-        timeSinceLastAttack = 0;
+        timeSinceLastMeleeAttack = 0;
+        timeSinceLastRangedAttack = 0;
+        timeSinceLastSpecial = 0;
+        isUsingSpecial = false;
+        isAttacking = false;
     }
 
     // Update is called once per frame
@@ -30,64 +41,123 @@ public class BossAttacks : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if (recentlyAttackedMelee || recentlyAttackedRanged)
+        CheckAttackCooldowns();
+    }
+
+    public void CheckAttackCooldowns()
+    {
+        if (recentlyAttackedMelee)
         {
-            timeSinceLastAttack += Time.deltaTime;
+            timeSinceLastMeleeAttack += Time.deltaTime;
+
+            if (timeSinceLastMeleeAttack > 10)
+            {
+                recentlyAttackedMelee = false;
+                timeSinceLastMeleeAttack = 0;
+            }
         }
 
-        if (timeSinceLastAttack > 10 && lastAttack == "melee")
+        if (recentlyAttackedRanged)
         {
-            recentlyAttackedMelee = false;
-            timeSinceLastAttack = 0;
+            timeSinceLastRangedAttack += Time.deltaTime;
+
+            if (timeSinceLastRangedAttack > 10)
+            {
+                recentlyAttackedRanged = false;
+                timeSinceLastRangedAttack = 0;
+            }
         }
-        else if (timeSinceLastAttack > 10 && lastAttack == "ranged")
+
+        if (recentlyAttackedSpecial)
         {
-            recentlyAttackedRanged = false;
-            timeSinceLastAttack = 0;
+            timeSinceLastSpecial += Time.deltaTime;
+
+            if (timeSinceLastSpecial > 25)
+            {
+                recentlyAttackedSpecial = false;
+                timeSinceLastSpecial = 0;
+            }
         }
     }
 
     public void MeleeAttack()
     {
-        if (!recentlyAttackedMelee)
+        if (!recentlyAttackedMelee && !isAttacking)
         {
            StartCoroutine(Melee());
+           bossMovement.canMove = false;
         }
+
+        bossMovement.canMove = true;
 
     }
 
     public void RangedAttack()
     {
-        if (!recentlyAttackedRanged)
+        if (!recentlyAttackedRanged && !isAttacking)
         {
             StartCoroutine(Ranged());
+            bossMovement.canMove = false;
         }
 
+        bossMovement.canMove = true;
+
+    }
+
+    public void LaunchSpecialRangedAttack()
+    {
+        if (!recentlyAttackedSpecial && !isAttacking)
+        {
+            StartCoroutine(SpecialRanged());
+            bossMovement.canMove = false;
+        }
+
+        bossMovement.canMove = true;
     }
 
     IEnumerator Melee()
     {
         recentlyAttackedMelee = true;
-        lastAttack = "melee";
+        isAttacking = true;
 
         // Start the melee animation
 
         if (!bossController.isDashing)
         {
-             boss.transform.position = Vector3.MoveTowards(boss.transform.position, boss.transform.position + boss.transform.forward, 0.05f);
+            boss.transform.position = Vector3.MoveTowards(boss.transform.position, boss.transform.position + boss.transform.forward, 0.05f);
             yield return new WaitForSeconds(2f);
             boss.transform.position = Vector3.MoveTowards(boss.transform.position, boss.transform.position - boss.transform.forward, 0.05f);
         }
+
+        isAttacking = false;
     }
 
     IEnumerator Ranged()
     {
         recentlyAttackedRanged = true;
-        lastAttack = "ranged";
+        isAttacking = true;
 
         // Start the ranged animation
         Instantiate(bossMaster.projectile);
         yield return new WaitForSeconds(1f);
+
+        isAttacking = false;
     }
 
+    IEnumerator SpecialRanged()
+    {
+        recentlyAttackedRanged = true;
+        isAttacking = true;
+        isUsingSpecial = true;
+
+        // Start the special animation
+        for (int i = 0; i < 15; i++)
+        {
+            Instantiate(bossMaster.projectile);
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        isUsingSpecial = false;
+        isAttacking = false;
+    }
 }

@@ -11,6 +11,9 @@ public class BossMovement : MonoBehaviour
     public Vector3 targetPosition;
     private Quaternion targetRotation;
     public bool canRotate;
+    private PlayerHealth player;
+    public bool canMove;
+    private bool playerHitByRay;
 
     // Start is called before the first frame update
     void Start()
@@ -19,11 +22,21 @@ public class BossMovement : MonoBehaviour
         bossController = gameObject.GetComponent<BossController>();
         bossAttacks = gameObject.GetComponent<BossAttacks>();
         canRotate = true;
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+        canMove = true;
+        playerHitByRay = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        playerHitByRay = false;
+
+        if (transform.position.y < 1.7f)
+        {
+            transform.position = new Vector3(transform.position.x, 1.7f, transform.position.z);
+        }
+
         // Sends out raycasts to see where the player is
         for (int i = 0; i < 150; i++)
         {
@@ -35,6 +48,7 @@ public class BossMovement : MonoBehaviour
             {
                 if (hit.transform.gameObject.tag == "Player")
                 {
+                    playerHitByRay = true;
                     // If the raycast hits the player, rotate towards the ray's rotation
                     targetRotation = Quaternion.LookRotation(hit.point - transform.position);
 
@@ -45,24 +59,45 @@ public class BossMovement : MonoBehaviour
             }
         }
 
-        // If the target rotation is not null, rotate towards the target rotation
-        if (targetRotation != null && canRotate)
-        { 
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * boss.rotationSpeed);
-        }
-
-        // If the player is more than 40 units away, jump towards the player and use a ranged attack
-        if (targetDistance > 40)
+        if (canMove && playerHitByRay)
         {
-            bossController.Jump();
-            boss.transform.position = Vector3.MoveTowards(boss.transform.position, targetPosition, boss.speedWhileJumping * Time.deltaTime);
-        }
+            // If the target rotation is not null, rotate towards the target rotation
+            if (targetRotation != null && canRotate)
+            { 
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * boss.rotationSpeed);
+            }
 
-        // If the player is less than 10 units away, dash forward and use a melee attack
-        else if (targetDistance < 10)
-        {
-            bossController.Dash();
-            boss.transform.position = Vector3.MoveTowards(boss.transform.position, targetPosition, boss.dashSpeed * Time.deltaTime);
+            // If the player is more than 30 units away, jump towards the player and use a ranged attack
+            if (targetDistance > 30)
+            {
+                bossController.Jump();
+                boss.transform.position = Vector3.MoveTowards(boss.transform.position, targetPosition, boss.speedWhileJumping * Time.deltaTime);
+            }
+
+            // If the player is less than 10 units away, dash forward and use a melee attack
+            else if (targetDistance < 10)
+            {
+                bossController.Dash();
+                boss.transform.position = Vector3.MoveTowards(boss.transform.position, targetPosition, boss.dashSpeed * Time.deltaTime);
+            }
+
+            // If the player is between 10 and 15 units away, launch a special ranged attack
+            else if (targetDistance > 10 && targetDistance < 15)
+            {
+                bossAttacks.LaunchSpecialRangedAttack();
+            }
+
+            // If the boss is using a special attack, spin around in a circle
+            else if (bossAttacks.isUsingSpecial)
+            {
+                bossController.Spin();
+            }
+
+            // If the boss hits the player, deal damage to the player
+            else if (targetDistance < 2)
+            {
+                player.TakeDamage(boss.meleeDmg);
+            }
         }
     }
 }
