@@ -44,7 +44,7 @@ public class EnemyMovement : MonoBehaviour
         {            
 
             RaycastHit hit;
-            Vector3 rayDirection = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f));
+            Vector3 rayDirection = new Vector3(Random.Range(-1f, 1f), Random.Range(-0.3f, 0.3f), Random.Range(-1f, 1f));
             bool hitSomething = Physics.Raycast(transform.position, rayDirection, out hit, 200f);
 
             if (hitSomething)
@@ -139,6 +139,12 @@ public class EnemyMovement : MonoBehaviour
         if (_timeSinceRangedAttack >= _attackRangedCooldown)
         {
             recentlyAttackedRanged = false;
+        }
+
+        // Resets the enemy's y position to its original position
+        if (transform.position.y != 0.5f)
+        {
+            transform.position = new Vector3(transform.position.x, 0.5f, transform.position.z);
         }
 
     }
