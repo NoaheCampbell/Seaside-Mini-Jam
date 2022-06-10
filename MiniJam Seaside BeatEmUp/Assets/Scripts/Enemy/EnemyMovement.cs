@@ -6,7 +6,7 @@ public class EnemyMovement : MonoBehaviour
 {
     private Quaternion _targetRotation;
     private Vector3 _targetPosition;
-    private float _speed;
+    [SerializeField] private float _speed = 0.05f;
     public bool playerIsHit;
     private string _objectTag;
     public float distance;
@@ -22,7 +22,6 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
         _enemyAttacks = GetComponent<EnemyAttacks>();
-        _speed = 0.05f;
         _timer = 0;
         attackDuration = 1f;
         recentlyAttacked = false;

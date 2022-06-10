@@ -33,18 +33,16 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        /*if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Enemy")
         {
             // do damage
-            Enemy enemy = collision.gameObject.GetComponent(typeof(Enemy)) as Enemy;
-            enemy.RecieveDamage(damage);
+            EnemyHealth enemy = collision.gameObject.GetComponent(typeof(EnemyHealth)) as EnemyHealth;
+            enemy.TakeDamage(player.rangedDmg);
 
-            // spawn number indicator
-
-        }*/
+        }
 
         // destroy object
-        Destroy(this.gameObject);
+        Destroy(gameObject);
     }
 
     // get player direction (where to shoot)
