@@ -32,16 +32,11 @@ public class BossMovement : MonoBehaviour
     {
         playerHitByRay = false;
 
-        if (transform.position.y < 1.7f)
-        {
-            transform.position = new Vector3(transform.position.x, 1.7f, transform.position.z);
-        }
-
         // Sends out raycasts to see where the player is
         for (int i = 0; i < 150; i++)
         {
             RaycastHit hit;
-            Vector3 rayDirection = new Vector3(Random.Range(-1f, 1f), Random.Range(-0.3f, 0.3f), Random.Range(-1f, 1f));
+            Vector3 rayDirection = new Vector3(Random.Range(-1f, 1f), Random.Range(-0.7f, 0.7f), Random.Range(-1f, 1f));
             bool hitSomething = Physics.Raycast(transform.position, rayDirection, out hit, 100f);
 
             if (hitSomething)
@@ -55,6 +50,12 @@ public class BossMovement : MonoBehaviour
                     // Gets the distance to the player and its position
                     targetDistance = Vector3.Distance(transform.position, hit.point);
                     targetPosition = hit.collider.gameObject.transform.position;
+                }
+
+                else if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Ground"))
+                {
+                    // Ignore the collision and the raycast keeps going
+                    Physics.IgnoreCollision(hit.collider, gameObject.GetComponent<Collider>());
                 }
             }
         }
@@ -139,5 +140,5 @@ public class BossMovement : MonoBehaviour
                 boss.transform.position = Vector3.MoveTowards(boss.transform.position, targetPosition, boss.speedWhileJumping * Time.deltaTime);
             }
         }
-    }
+    } 
 }
