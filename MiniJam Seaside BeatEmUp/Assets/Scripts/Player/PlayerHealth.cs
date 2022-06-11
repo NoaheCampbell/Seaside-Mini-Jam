@@ -61,7 +61,7 @@ public class PlayerHealth : MonoBehaviour
         respawning = true;
 
         // turn off player art
-        player.playerArt.SetActive(false);
+        // player.playerArt.SetActive(false);
 
         // teleport player
         player.transform.position = GameObject.FindWithTag("Respawn").transform.position;
@@ -71,7 +71,7 @@ public class PlayerHealth : MonoBehaviour
         player.health = player.maxHp;
 
         // turn art on
-        player.playerArt.SetActive(true);
+        // player.playerArt.SetActive(true);
 
         player.canMove = true;
 
