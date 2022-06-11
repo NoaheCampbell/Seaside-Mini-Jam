@@ -27,11 +27,64 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         Jump();
+        Dash();
 
         MeleeAttack();
         RangedAttack();
+
+        PlaySounds();
     }
 
+
+    #region Audio
+
+    // sounds function
+    void PlaySounds()
+    {
+        if (moving)
+        {
+            // play move sound
+            player.movementSource.clip = player.jumpSound;
+            player.movementSource.gameObject.SetActive(true);
+        }
+        else
+        {
+            player.movementSource.gameObject.SetActive(false);
+        }
+
+        if (Input.GetButtonDown("Jump") && player.isGrounded)
+        {
+            // play jump sound
+            player.effectsSource.clip = player.jumpSound;
+            player.effectsSource.Play();
+        }
+
+        if (Input.GetButtonDown("Dash") && player.canMove && player.canDash)
+        {
+            // play dash sound
+            player.effectsSource.clip = player.jumpSound;
+            player.effectsSource.Play();
+        }
+
+        if (player.canAttack && !attacking && Input.GetButtonDown("Fire1"))
+        {
+            // play melee sound
+            player.effectsSource.clip = player.jumpSound;
+            player.effectsSource.Play();
+        }
+
+        if (player.canAttack && !attacking && Input.GetButtonDown("Fire2") && !player.isRecharging)
+        {
+            // play ranged sound
+            player.effectsSource.clip = player.jumpSound;
+            player.effectsSource.Play();
+        }
+
+        // play music 
+        //player.musicSource.Play();
+    }
+
+    #endregion
 
     #region Attacks
 
@@ -149,6 +202,36 @@ public class PlayerController : MonoBehaviour
 
         // move
         controller.Move(playerVelocity * Time.deltaTime);
+    }
+
+    // Dash Function
+    void Dash()
+    {
+        if (Input.GetButtonDown("Dash") && player.canMove && player.canDash)
+        {
+            StartCoroutine(DashAbility());
+        }
+    }
+
+    // dash coroutine
+    IEnumerator DashAbility()
+    {
+        float startMoveSpeed = player.moveSpeed;
+        player.moveSpeed = player.dashSpeed;
+
+        yield return new WaitForSeconds(.1f);
+
+        player.moveSpeed = startMoveSpeed;
+
+        StartCoroutine(DashCooldown());
+    }
+
+    // dash cooldown 
+    IEnumerator DashCooldown()
+    {
+        player.canDash = false;
+        yield return new WaitForSeconds(player.dashCooldown);
+        player.canDash = true;
     }
 
     // rotate player

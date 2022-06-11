@@ -22,5 +22,12 @@ public class HitBox : MonoBehaviour
             EnemyHealth enemy = collision.gameObject.GetComponent(typeof(EnemyHealth)) as EnemyHealth;
             enemy.TakeDamage(player.meleeDmg);
         }
+
+        if (collision.gameObject.tag == "BreakableObj")
+        {
+            // do damage
+            BreakableObject obj = collision.gameObject.GetComponent(typeof(BreakableObject)) as BreakableObject;
+            obj.HitBreakableObj(player.meleeDmg);
+        }
     }
 }

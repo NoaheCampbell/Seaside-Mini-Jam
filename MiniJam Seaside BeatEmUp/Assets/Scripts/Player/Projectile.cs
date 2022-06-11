@@ -23,7 +23,6 @@ public class Projectile : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody>();
 
         GetDirection();
-        //direction = GameObject.FindWithTag("Player").GetComponent<PlayerMaster>().rotationObjs.transform.TransformDirection(new Vector3(0, 0, projectileSpeed));
     }
 
     private void Update()
@@ -39,6 +38,13 @@ public class Projectile : MonoBehaviour
             EnemyHealth enemy = collision.gameObject.GetComponent(typeof(EnemyHealth)) as EnemyHealth;
             enemy.TakeDamage(player.rangedDmg);
 
+        }
+
+        if (collision.gameObject.tag == "BreakableObj")
+        {
+            // do damage
+            BreakableObject obj = collision.gameObject.GetComponent(typeof(BreakableObject)) as BreakableObject;
+            obj.HitBreakableObj(player.rangedDmg);
         }
 
         // destroy object
