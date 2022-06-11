@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
         MeleeAttack();
         RangedAttack();
 
-        PlaySounds();
+        // PlaySounds();
     }
 
 
@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            player.movementSource.gameObject.SetActive(false);
+            // player.movementSource.gameObject.SetActive(false);
         }
 
         if (Input.GetButtonDown("Jump") && player.isGrounded)
