@@ -28,10 +28,12 @@ public class EnemyMaster : MonoBehaviour
     public int rangedDmg = 1;
     public float rangeCooldown = 1f;
     public GameObject projectile;
+    public GameObject ultimateAOE;
     public string combatPreference;
     public float meleeCooldown = 10f;
     public float rangedCooldown = 10f;
     public float specialCooldown = 25f;
+    public float ultimateCooldown = 40f;
 
     public void EnemyType(string tag)
     {

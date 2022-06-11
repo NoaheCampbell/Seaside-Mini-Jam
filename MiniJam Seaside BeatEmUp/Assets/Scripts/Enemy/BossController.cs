@@ -67,7 +67,7 @@ public class BossController : MonoBehaviour
 
     public void Jump()
     {
-        if (!recentlyJumped && bossMaster.isGrounded && !bossAttacks.isAttacking)
+        if (!recentlyJumped && bossMaster.isGrounded && (!bossAttacks.isAttacking || bossAttacks.isUsingUltimate))
         {
             recentlyJumped = true;
             
@@ -78,7 +78,7 @@ public class BossController : MonoBehaviour
 
     public void Dash()
     {
-        if (!recentlyDashed && bossMaster.isGrounded && !bossAttacks.isAttacking)
+        if (!recentlyDashed && bossMaster.isGrounded && (!bossAttacks.isAttacking || bossAttacks.isUsingUltimate))
         {
             recentlyJumped = true;
 
@@ -142,6 +142,12 @@ public class BossController : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
             // boss.transform.position = Vector3.MoveTowards(boss.transform.position, bossPosition, 0.5f);
             timerLeft -= 0.5f;
+        }
+
+        if (bossAttacks.isUsingUltimate)
+        {
+            var tempAOE = Instantiate(bossMaster.ultimateAOE, boss.transform);
+            bossAttacks.aoe = tempAOE.GetComponent<UltimateAOE>();
         }
 
         // Shoots a projectile at the player after the boss lands

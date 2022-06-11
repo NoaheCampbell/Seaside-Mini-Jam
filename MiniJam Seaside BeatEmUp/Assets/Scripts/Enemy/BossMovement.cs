@@ -84,13 +84,20 @@ public class BossMovement : MonoBehaviour
             // If the player is between 10 and 15 units away, launch a special ranged attack
             else if (targetDistance > 10 && targetDistance < 15)
             {
-                bossAttacks.LaunchSpecialRangedAttack();
+                // bossAttacks.LaunchSpecialRangedAttack();
             }
 
             // If the boss is using a special attack, spin around in a circle
             else if (bossAttacks.isUsingSpecial)
             {
                 bossController.Spin();
+            }
+
+            // If a random number is under 0.01, launch an ultimate attack
+            float randomNumber = Random.Range(0, 100);
+            if (randomNumber < 0.01f)
+            {
+                bossAttacks.UltimateAttack();
             }
 
             // If the boss hits the player, deal damage to the player
