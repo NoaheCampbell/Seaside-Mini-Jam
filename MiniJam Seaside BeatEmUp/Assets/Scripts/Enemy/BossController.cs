@@ -15,6 +15,7 @@ public class BossController : MonoBehaviour
     public bool recentlyDashed;
     private float timeSinceLastDash;
     public bool isDashing;
+    public bool isJumping;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +35,7 @@ public class BossController : MonoBehaviour
         recentlyDashed = false;
         timeSinceLastDash = 0;
         isDashing = false;
+        isJumping = false;
     }
 
     // Update is called once per frame
@@ -135,12 +137,12 @@ public class BossController : MonoBehaviour
     {
         // Makes the boss jump up for a few seconds
         var timerLeft = 30f;
+        isJumping = true;
 
         while (timerLeft > 0)
         {
             boss.transform.position = Vector3.MoveTowards(boss.transform.position, bossPosition + new Vector3(0, 10, 0), 1f);
             yield return new WaitForSeconds(0.01f);
-            // boss.transform.position = Vector3.MoveTowards(boss.transform.position, bossPosition, 0.5f);
             timerLeft -= 0.5f;
         }
 
@@ -152,6 +154,8 @@ public class BossController : MonoBehaviour
 
         // Shoots a projectile at the player after the boss lands
         bossAttacks.RangedAttack();
+
+        isJumping = false;
     }
 
     IEnumerator SpinAnimation()

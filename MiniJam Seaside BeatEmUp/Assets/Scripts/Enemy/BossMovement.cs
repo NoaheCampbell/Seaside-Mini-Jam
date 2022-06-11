@@ -94,12 +94,12 @@ public class BossMovement : MonoBehaviour
                 bossController.Spin();
             }
 
-            // If a random number is under some number, launch an ultimate attack
-            float randomNumber = Random.Range(0, 100);
-            if (randomNumber < 0.005f)
-            {
-                bossAttacks.UltimateAttack();
-            }
+            // If a random number is under some number, launch an ultimate attack (nonfunctional)
+            // float randomNumber = Random.Range(0, 100);
+            // if (randomNumber < 0.005f)
+            // {
+            //     bossAttacks.UltimateAttack();
+            // }
 
             // If the boss hits the player, deal damage to the player
             else if (targetDistance < 2)
