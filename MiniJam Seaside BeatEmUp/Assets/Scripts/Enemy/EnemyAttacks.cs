@@ -23,7 +23,7 @@ public class EnemyAttacks : MonoBehaviour
     public void MeleeAnimation(Vector3 targetPos)
     {
         // Start the melee animation
-       targetPosition = targetPos;
+        targetPosition = targetPos;
         StartCoroutine(Melee());
     }
 

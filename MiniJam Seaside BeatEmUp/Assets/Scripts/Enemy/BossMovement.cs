@@ -84,7 +84,7 @@ public class BossMovement : MonoBehaviour
             // If the player is between 10 and 15 units away, launch a special ranged attack
             else if (targetDistance > 10 && targetDistance < 15)
             {
-                // bossAttacks.LaunchSpecialRangedAttack();
+                bossAttacks.LaunchSpecialRangedAttack();
             }
 
             // If the boss is using a special attack, spin around in a circle
@@ -93,9 +93,9 @@ public class BossMovement : MonoBehaviour
                 bossController.Spin();
             }
 
-            // If a random number is under 0.01, launch an ultimate attack
+            // If a random number is under some number, launch an ultimate attack
             float randomNumber = Random.Range(0, 100);
-            if (randomNumber < 0.01f)
+            if (randomNumber < 0.005f)
             {
                 bossAttacks.UltimateAttack();
             }
@@ -104,6 +104,39 @@ public class BossMovement : MonoBehaviour
             else if (targetDistance < 2)
             {
                 player.TakeDamage(boss.meleeDmg);
+            }
+
+            // If the player is more than 50 units away, move closer
+            if (targetDistance > 50)
+            {
+                boss.transform.position = Vector3.MoveTowards(boss.transform.position, targetPosition, boss.moveSpeed * Time.deltaTime);
+            }
+
+            // If the boss is looking at the player and the player is less than 20 units away, use a ranged attack
+            var bossDirection = Vector3.Normalize(targetPosition - transform.position);
+            float dot = Vector3.Dot(boss.transform.forward, bossDirection);
+
+            if (dot > 0.9f && targetDistance < 20)
+            {
+                bossAttacks.RangedAttack();
+            }
+
+            // If the boss is within 10 units of the player, move forward and use a melee attack
+            if (targetDistance < 10)
+            {
+                boss.transform.position = Vector3.MoveTowards(boss.transform.position, targetPosition, boss.moveSpeed * Time.deltaTime);
+                bossAttacks.MeleeAttack();
+            }
+
+            // If the player is looking at the boss and is closer than 5 units, jump up and back away
+            Vector3 playerForward = GameObject.FindGameObjectWithTag("Player").transform.forward;
+            var playerDirection = Vector3.Normalize(playerForward - transform.position);
+            dot = Vector3.Dot(boss.transform.forward, playerDirection);
+
+            if (dot > 0.9f && targetDistance < 5)
+            {
+                bossController.Jump();
+                boss.transform.position = Vector3.MoveTowards(boss.transform.position, targetPosition, boss.speedWhileJumping * Time.deltaTime);
             }
         }
     }
