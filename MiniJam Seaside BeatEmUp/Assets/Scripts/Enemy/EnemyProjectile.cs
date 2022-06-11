@@ -5,25 +5,33 @@ using UnityEngine;
 public class EnemyProjectile : MonoBehaviour
 {
     private EnemyMaster enemy;
-    private Rigidbody rb;
+    public Rigidbody rb;
+    private float timer;
 
     [HideInInspector] public float damage = 1;
-    public float projectileSpeed = 1;
+    public float projectileSpeed = 10;
 
     // Start is called before the first frame update
     void Start()
     {
-        enemy = GameObject.FindWithTag("Enemy").GetComponent<EnemyMaster>();
+        enemy = gameObject.GetComponent<EnemyMaster>();
         transform.position = GameObject.FindWithTag("EnemyProjectileSpawn").transform.position;
+        transform.rotation = GameObject.Find("EnemyProjectileSpawn").transform.parent.rotation;
         gameObject.transform.parent = GameObject.FindWithTag("ProjectileParent").transform;
+        timer = 10f;
 
-        rb = gameObject.GetComponent<Rigidbody>();        
     }
 
     // Update is called once per frame
     void Update()
     {
-        rb.velocity = Vector3.forward * projectileSpeed;
+        transform.Translate(Vector3.forward * projectileSpeed * Time.deltaTime);
+        timer -= Time.deltaTime;
+
+        if (timer <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)

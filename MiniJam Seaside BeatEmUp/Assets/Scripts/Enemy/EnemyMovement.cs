@@ -4,35 +4,35 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    private Quaternion _targetRotation;
-    private Vector3 _targetPosition;
-    [SerializeField] private float _speed = 0.05f;
+    private Quaternion targetRotation;
+    private Vector3 targetPosition;
+    [SerializeField] private float speed = 0.05f;
     public bool playerIsHit;
-    private string _objectTag;
+    private string objectTag;
     public float distance;
-    private EnemyAttacks _enemyAttacks;
-    private float _timer;
+    private EnemyAttacks enemyAttacks;
+    private float timer;
     public float attackDuration;
     public bool recentlyAttackedMelee;
     public bool recentlyAttackedRanged;
-    private float _timeSinceMeleeAttack;
-    private float _timeSinceRangedAttack;
-    private float _attackMeleeCooldown;
-    private float _attackRangedCooldown;
-    private bool _shouldMoveBack;
+    private float timeSinceMeleeAttack;
+    private float timeSinceRangedAttack;
+    private float attackMeleeCooldown;
+    private float attackRangedCooldown;
+    private bool shouldMoveBack;
     private EnemyMaster enemy;
 
     // Start is called before the first frame update
     void Start()
     {
-        _enemyAttacks = GetComponent<EnemyAttacks>();
-        _timer = 0;
+        enemyAttacks = GetComponent<EnemyAttacks>();
+        timer = 0;
         attackDuration = 1f;
         recentlyAttackedMelee = false;
         recentlyAttackedRanged = false;
-        _attackMeleeCooldown = 5f;
-        _attackRangedCooldown = 0.5f;
-        _shouldMoveBack = false;
+        attackMeleeCooldown = 5f;
+        attackRangedCooldown = 0.5f;
+        shouldMoveBack = false;
         enemy = GetComponent<EnemyMaster>();
     }
 
@@ -44,20 +44,20 @@ public class EnemyMovement : MonoBehaviour
         {            
 
             RaycastHit hit;
-            Vector3 rayDirection = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f));
-            bool hitSomething = Physics.Raycast(transform.position, rayDirection, out hit, 200f);
+            Vector3 rayDirection = new Vector3(Random.Range(-1f, 1f), Random.Range(-0.3f, 0.3f), Random.Range(-1f, 1f));
+            bool hitSomething = Physics.Raycast(transform.position, rayDirection, out hit, 100f);
 
             if (hitSomething)
-                _objectTag = hit.transform.gameObject.tag;
+                objectTag = hit.transform.gameObject.tag;
 
-            if (hitSomething && _objectTag == "Player")
+            if (hitSomething && objectTag == "Player")
             {
                 // If the raycast hits the player, rotate towards the ray's rotation
-                _targetRotation = Quaternion.LookRotation(hit.point - transform.position);
+                targetRotation = Quaternion.LookRotation(hit.point - transform.position);
 
                 // Gets the distance to the player and its position
                 distance = Vector3.Distance(transform.position, hit.point);
-                _targetPosition = hit.collider.gameObject.transform.position;
+                targetPosition = hit.collider.gameObject.transform.position;
 
                 // Turns playerIsHit to true for the rest of the loop
                 playerIsHit = true;
@@ -67,8 +67,8 @@ public class EnemyMovement : MonoBehaviour
                 if (i == 0)
                 {
                     // If the raycasts didn't hit the player, keep the enemy still
-                    _targetRotation = transform.rotation;
-                    _targetPosition = transform.position;
+                    targetRotation = transform.rotation;
+                    targetPosition = transform.position;
                     playerIsHit = false;
                 }
 
@@ -81,64 +81,70 @@ public class EnemyMovement : MonoBehaviour
             // If the enemy is under 30 units away from the player, move closer to the player
             if (distance < 30f && distance > 0.1f)
             {
-                transform.position = Vector3.MoveTowards(transform.position, _targetPosition, _speed);
-                transform.rotation = Quaternion.Slerp(transform.rotation, _targetRotation, Time.deltaTime * _speed);
+                transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * speed);
             }
 
             // If the enemy is less than 0.1 units away from the player and hasn't recently attacked, attack and
             // set recentlyAttacked to true while moving back
             if (distance <= 0.1f && !recentlyAttackedMelee)
             {
-                _enemyAttacks.MeleeAnimation(_targetPosition);
+                enemyAttacks.MeleeAnimation(targetPosition);
 
-                transform.position = Vector3.MoveTowards(transform.position, _targetPosition, -_speed * 2);
-                transform.rotation = Quaternion.Slerp(transform.rotation, _targetRotation, Time.deltaTime * _speed);
+                transform.position = Vector3.MoveTowards(transform.position, targetPosition, -speed * 2);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * speed);
                 recentlyAttackedMelee = true;
-                _shouldMoveBack = true;
+                shouldMoveBack = true;
             }
             // If the enemy has recently attacked, check to see if it should move back
-            else if (_shouldMoveBack)
+            else if (shouldMoveBack)
             {
-                transform.position = Vector3.MoveTowards(transform.position, _targetPosition, -_speed * 2);
-                transform.rotation = Quaternion.Slerp(transform.rotation, _targetRotation, Time.deltaTime * _speed);
+                transform.position = Vector3.MoveTowards(transform.position, targetPosition, -speed * 2);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * speed);
 
                 if (distance > 30f)
                 {
-                    _shouldMoveBack = false;
+                    shouldMoveBack = false;
                 }
             }
 
             // If the enemy is between 30 and 50 units from the player, back away even more (possible switch to ranged mode later)
             if (distance > 30f && distance < 50f && !recentlyAttackedRanged)
             {
-                _enemyAttacks.RangedAnimation();
-                transform.position = Vector3.MoveTowards(transform.position, _targetPosition, -_speed);
-                transform.rotation = Quaternion.Slerp(transform.rotation, _targetRotation, Time.deltaTime * _speed);
+                enemyAttacks.RangedAnimation();
+                transform.position = Vector3.MoveTowards(transform.position, targetPosition, -speed);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * speed);
                 recentlyAttackedRanged = true;
             }
 
-            // If the enemy is more than 80 units from the player, move towards the player
-            if (distance > 80f)
+            // If the enemy is more than 60 units from the player, move towards the player
+            if (distance > 60f)
             {
-                transform.position = Vector3.MoveTowards(transform.position, _targetPosition, _speed);
-                transform.rotation = Quaternion.Slerp(transform.rotation, _targetRotation, Time.deltaTime * _speed);
+                transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * speed);
             }
         }
 
         // Adds to all the timers
-        _timer += Time.deltaTime;
-        _timeSinceMeleeAttack += Time.deltaTime;
-        _timeSinceRangedAttack += Time.deltaTime;
+        timer += Time.deltaTime;
+        timeSinceMeleeAttack += Time.deltaTime;
+        timeSinceRangedAttack += Time.deltaTime;
 
         // Checks to see if the enemy should attack again
-        if (_timeSinceMeleeAttack >= _attackMeleeCooldown)
+        if (timeSinceMeleeAttack >= attackMeleeCooldown)
         {
             recentlyAttackedMelee = false;
         }
 
-        if (_timeSinceRangedAttack >= _attackRangedCooldown)
+        if (timeSinceRangedAttack >= attackRangedCooldown)
         {
             recentlyAttackedRanged = false;
+        }
+
+        // Resets the enemy's y position to its original position
+        if (transform.position.y != 0.5f)
+        {
+            transform.position = new Vector3(transform.position.x, 0.5f, transform.position.z);
         }
 
     }
