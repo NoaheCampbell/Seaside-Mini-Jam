@@ -146,12 +146,6 @@ public class BossController : MonoBehaviour
             timerLeft -= 0.5f;
         }
 
-        if (bossAttacks.isUsingUltimate)
-        {
-            var tempAOE = Instantiate(bossMaster.ultimateAOE, boss.transform);
-            bossAttacks.aoe = tempAOE.GetComponent<UltimateAOE>();
-        }
-
         // Shoots a projectile at the player after the boss lands
         bossAttacks.RangedAttack();
 

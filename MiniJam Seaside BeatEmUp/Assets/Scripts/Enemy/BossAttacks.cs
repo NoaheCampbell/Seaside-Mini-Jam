@@ -8,7 +8,6 @@ public class BossAttacks : MonoBehaviour
     private GameObject boss;
     private BossController bossController;
     private BossMovement bossMovement;
-    public UltimateAOE aoe;
     private bool recentlyAttackedMelee;
     private bool recentlyAttackedRanged;
     private float timer;
@@ -48,21 +47,6 @@ public class BossAttacks : MonoBehaviour
         timer += Time.deltaTime;
 
         CheckAttackCooldowns();
-
-        if (aoe != null)
-        {
-            if (aoe.active)
-            {
-                bossMovement.canMove = false;
-
-                StartCoroutine(DestroyAOE());
-
-            }
-            else
-            {
-                bossMovement.canMove = true;
-            }
-        }
     }
 
     public void CheckAttackCooldowns()
@@ -221,11 +205,5 @@ public class BossAttacks : MonoBehaviour
         isUsingUltimate = false;
         isAttacking = false;
     }
-
-    IEnumerator DestroyAOE()
-    {
-        yield return new WaitForSeconds(5f);
-        aoe.active = false;
-    }
-        
+       
 }

@@ -15,7 +15,7 @@ public class EnemyProjectile : MonoBehaviour
     void Start()
     {
         enemy = gameObject.GetComponent<EnemyMaster>();
-        transform.position = GameObject.FindWithTag("EnemyProjectileSpawn").transform.position;
+        transform.position = GameObject.FindWithTag("ProjectileSpawn").transform.position;
         transform.rotation = GameObject.Find("EnemyProjectileSpawn").transform.parent.rotation;
         gameObject.transform.parent = GameObject.FindWithTag("ProjectileParent").transform;
         timer = 10f;
