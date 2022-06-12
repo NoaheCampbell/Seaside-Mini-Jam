@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMaster : MonoBehaviour
 {
@@ -37,6 +38,12 @@ public class PlayerMaster : MonoBehaviour
     public GameObject meleeHitbox;
     public GameObject rangedProjectile;
     [System.NonSerialized] public bool isRecharging = false; //  recharhing ranged attack (reload)
+
+    [Header("UI")]
+    public GameObject gameOverScreen;
+    public GameObject settingsMenu;
+    public Slider effectsVolumeSlider;
+    public Slider musicVolumeSlider;
 
     [Header("Audio")]
     public AudioSource effectsSource;

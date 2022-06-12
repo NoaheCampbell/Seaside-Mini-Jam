@@ -13,10 +13,15 @@ public class UIManager : MonoBehaviour
     public GameObject credits;
 
     [Header("Settings UI")]
-    public Slider effectsVolume;
-    public Slider musicVolume;
+    public Slider _effectsVolume;
+    public Slider _musicVolume;
 
     #region functions
+
+    private void Start()
+    {
+        OpenSettings();
+    }
 
     public void OpenMenu(string menuName)
     {
@@ -32,6 +37,7 @@ public class UIManager : MonoBehaviour
         }
         else if (menuName == "settings")
         {
+            OpenSettings();
             settings.SetActive(true);
         }
         else if (menuName == "controls")
@@ -46,17 +52,24 @@ public class UIManager : MonoBehaviour
 
     public void PlayGame()
     {
-
+        GameObject.FindWithTag("GameManager").GetComponent<GameManager>().StartGame();
     }
 
     public void ExitGame()
     {
+        Application.Quit();
+    }
 
+    void OpenSettings()
+    {
+        _effectsVolume.value = GameObject.FindWithTag("GameManager").GetComponent<GameManager>().effectsVolume;
+        _musicVolume.value = GameObject.FindWithTag("GameManager").GetComponent<GameManager>().musicVolume;
     }
 
     public void UpdateSettings()
     {
-
+        GameObject.FindWithTag("GameManager").GetComponent<GameManager>().effectsVolume = _effectsVolume.value;
+        GameObject.FindWithTag("GameManager").GetComponent<GameManager>().musicVolume = _musicVolume.value;
     }
 
     #endregion 
