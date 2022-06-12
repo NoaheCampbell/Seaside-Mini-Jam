@@ -136,7 +136,7 @@ public class BossAttacks : MonoBehaviour
         recentlyAttackedRanged = true;
 
         // Start the ranged animation
-        Instantiate(bossMaster.projectile, boss.transform.position + boss.transform.forward, boss.transform.rotation);
+        Instantiate(bossMaster.projectile, boss.transform);
         yield return new WaitForSeconds(1f);
 
     }
