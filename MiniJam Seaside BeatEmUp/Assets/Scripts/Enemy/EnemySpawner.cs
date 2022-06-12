@@ -6,6 +6,7 @@ public class EnemySpawner : MonoBehaviour
 {
     private EnemyManager enemyManager;
     private bool spawning = false;
+    private bool spawnBoss = false;
     private bool spawnEnemy = false;
 
     // Start is called before the first frame update
@@ -29,6 +30,22 @@ public class EnemySpawner : MonoBehaviour
                 StartCoroutine(SpawnEnemy());
             }
         }
+
+        if (gameObject.tag == "BossSpawner" && other.gameObject.tag == "Player")
+        {
+            if (!spawning)
+            {
+                StartCoroutine(SpawnEnemy());
+            }
+        }
+
+        if (gameObject.tag == "BossAreaSpawner" && other.gameObject.tag == "Player")
+        {
+            if (!spawning)
+            {
+                StartCoroutine(SpawnEnemy());
+            }
+        }
     }
 
     IEnumerator SpawnEnemy()
@@ -36,7 +53,7 @@ public class EnemySpawner : MonoBehaviour
         spawning = true;
 
         // check if enemies are allowed
-        if (enemyManager.enemyCount < enemyManager.maxEnemies)
+        if (enemyManager.enemyCount < enemyManager.maxEnemies && gameObject.tag != "BossAreaSpawner")
         {
             // get chance to spawn enemy
             int spawnInt = Random.Range(1, 101);
@@ -46,6 +63,23 @@ public class EnemySpawner : MonoBehaviour
             {
                 spawnEnemy = true;
             }
+        }
+
+        else if (enemyManager.bossAreaEnemies < enemyManager.maxBossAreaEnemies && gameObject.tag == "BossAreaSpawner")
+        {
+            // get chance to spawn enemy
+            int spawnInt = Random.Range(1, 101);
+
+            // if selected set bool
+            if (enemyManager.spawnChance >= spawnInt && enemyManager.spawnChance > 0)
+            {
+                spawnEnemy = true;
+            }
+        }
+
+        else if (enemyManager.bossCount < enemyManager.maxBosses && gameObject.tag == "BossSpawner")
+        {
+            spawnBoss = true;
         }
 
         yield return new WaitForSeconds(1);
@@ -64,7 +98,22 @@ public class EnemySpawner : MonoBehaviour
             enemyManager.enemyCount += 1;
         }
 
+        if (spawnBoss)
+        {
+            // instantiate random enemy from list of prefabs
+            Instantiate(
+                enemyManager.bossPrefab, 
+                GameObject.Find("BossSpawn").transform.position, 
+                Quaternion.identity, 
+                GameObject.Find("EnemyParent").transform
+                );
+
+            // add to enemy count
+            enemyManager.bossCount += 1;
+        }
+
         spawnEnemy = false;
+        spawnBoss = false;
         spawning = false;
     }
 
