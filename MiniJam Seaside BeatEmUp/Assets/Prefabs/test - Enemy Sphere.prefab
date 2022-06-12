@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 8290432390771811412}
   - component: {fileID: 8290432390771811422}
   - component: {fileID: 7816358633914726018}
+  - component: {fileID: 3119539099755892825}
   m_Layer: 0
   m_Name: test - Enemy Sphere
   m_TagString: Enemy
@@ -67,6 +68,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4449558902803549927}
+  - {fileID: 7629347391643545667}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -132,12 +134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ae3642cb6f13452a844660eae7dc005, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.05
   playerIsHit: 0
   distance: 0
-  attackDuration: 0
-  recentlyAttackedMelee: 0
-  recentlyAttackedRanged: 0
 --- !u!143 &8290432390771811411
 CharacterController:
   m_ObjectHideFlags: 0
@@ -201,8 +199,6 @@ MonoBehaviour:
   moveSpeed: 2
   isGrounded: 1
   gravForce: -1
-  jumpForce: 1
-  speedWhileJumping: 4
   dashSpeed: 0
   rotationSpeed: 50
   meleeDmg: 5
@@ -214,3 +210,54 @@ MonoBehaviour:
   meleeCooldown: 10
   rangedCooldown: 10
   specialCooldown: 25
+  meleeDistance: 3
+  minRangeDistance: 5
+  maxRangeDistance: 10
+--- !u!114 &3119539099755892825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8290432390771811413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 274fb5f83ef9f49fa89ad639e484486f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundCheck: {fileID: 7629347391643545667}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 8
+  groundDistance: 0.05
+--- !u!1 &9037275103191798143
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7629347391643545667}
+  m_Layer: 0
+  m_Name: EnemyGroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7629347391643545667
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9037275103191798143}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.44, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8290432390771811423}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

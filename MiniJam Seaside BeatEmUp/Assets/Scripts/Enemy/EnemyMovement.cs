@@ -24,8 +24,6 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.rotation = new Quaternion(0, transform.rotation.y, 0, transform.rotation.w);
-
         // Sends out raycasts to determine if the player is near the enemy
         for (int i = 0; i < 100; i++)
         {            
@@ -51,18 +49,6 @@ public class EnemyMovement : MonoBehaviour
                     // Turns playerIsHit to true for the rest of the loop
                     playerIsHit = true;
                 }
-                // else if (objectTag == "Spawner")
-                // {
-                //     // Keep the raycast going
-                //     var hitPosition = hit.point;
-                //     var distanceTravelled = Vector3.Distance(transform.position, hitPosition);
-                //     var remainingDistance = 100 - distanceTravelled;
-
-                //     if (remainingDistance > 0)
-                //     {
-                //         Physics.Raycast(transform.position, rayDirection, out hit, remainingDistance);
-                //     }
-                // }
             }
             else
             {
@@ -73,7 +59,6 @@ public class EnemyMovement : MonoBehaviour
                     targetPosition = transform.position;
                     playerIsHit = false;
                 }
-
             }
         }
         
@@ -82,6 +67,7 @@ public class EnemyMovement : MonoBehaviour
         {
             // Move towards the player's position and rotate towards them
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, enemy.moveSpeed * Time.deltaTime);
+            targetRotation = new Quaternion(0, targetRotation.y, 0, targetRotation.w);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, enemy.rotationSpeed);
 
             // Shoot the player whenever the cooldown is 0
@@ -102,12 +88,6 @@ public class EnemyMovement : MonoBehaviour
         // Adds to all the timers
         timer += Time.deltaTime;
         enemy.rangeCooldown -= Time.deltaTime;
-
-        // Resets the enemy's y position to its original position
-        if (transform.position.y != 0.5f)
-        {
-            transform.position = new Vector3(transform.position.x, 0.5f, transform.position.z);
-        }
 
     }
 }
