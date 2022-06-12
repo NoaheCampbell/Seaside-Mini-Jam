@@ -326,6 +326,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_Name
       value: BossAreaSpawner (6)
@@ -1847,6 +1851,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_Name
       value: BossAreaSpawner (44)
@@ -1987,6 +1995,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2176876021676840435, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
@@ -3479,6 +3491,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_Name
       value: BossAreaSpawner (38)
@@ -3885,6 +3901,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_Name
       value: BossAreaSpawner (25)
@@ -3949,6 +3969,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2176876021676840435, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
@@ -4087,6 +4111,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2176876021676840435, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
@@ -4231,6 +4259,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_Name
       value: BossAreaSpawner (47)
@@ -4295,6 +4327,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2176876021676840435, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
@@ -5109,6 +5145,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_Name
       value: BossAreaSpawner (28)
@@ -5643,6 +5683,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_Name
       value: EnemySpawner (5)
@@ -5990,6 +6034,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_Name
       value: BossAreaSpawner (23)
@@ -6056,6 +6104,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_Name
       value: EnemySpawner (4)
@@ -6116,6 +6168,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2176876021676840435, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
@@ -6322,6 +6378,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_Name
       value: BossAreaSpawner (27)
@@ -6388,6 +6448,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_Name
       value: EnemySpawner (11)
@@ -6447,7 +6511,7 @@ MonoBehaviour:
   gamePaused: 0
   currentLevel: 1
   playerLives: 3
-  effectVolume: 0.5
+  effectsVolume: 0.5
   musicVolume: 0.5
 --- !u!114 &695678686
 MonoBehaviour:
@@ -6521,6 +6585,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_Name
       value: BossAreaSpawner (5)
@@ -6585,6 +6653,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2176876021676840435, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
@@ -6727,6 +6799,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2176876021676840435, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
@@ -7472,6 +7548,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_Name
       value: BossAreaSpawner (11)
@@ -8059,6 +8139,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2176876021676840435, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
@@ -8695,6 +8779,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_Name
       value: BossAreaSpawner (43)
@@ -8835,6 +8923,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2176876021676840435, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
@@ -8979,6 +9071,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_Name
       value: BossAreaSpawner (30)
@@ -9045,6 +9141,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_Name
       value: EnemySpawner (9)
@@ -9105,6 +9205,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2176876021676840435, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
@@ -9200,6 +9304,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_Name
       value: BossAreaSpawner (32)
@@ -9264,6 +9372,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2176876021676840435, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
@@ -9332,6 +9444,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_Name
       value: EnemySpawner (2)
@@ -9392,6 +9508,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2176876021676840435, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
@@ -9536,6 +9656,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_Name
       value: BossAreaSpawner (9)
@@ -9600,6 +9724,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2176876021676840435, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
@@ -9867,6 +9995,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_Name
       value: EnemySpawner
@@ -9927,6 +10059,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2176876021676840435, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
@@ -10069,6 +10205,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2176876021676840435, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
@@ -11374,6 +11514,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_Name
       value: BossAreaSpawner (42)
@@ -11438,6 +11582,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2176876021676840435, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
@@ -11506,6 +11654,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_Name
       value: BossAreaSpawner (19)
@@ -11570,6 +11722,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2176876021676840435, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
@@ -11745,6 +11901,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_Name
       value: BossAreaSpawner (4)
@@ -11809,6 +11969,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2176876021676840435, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
@@ -12029,6 +12193,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_Name
       value: BossAreaSpawner (22)
@@ -12093,6 +12261,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2176876021676840435, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
@@ -12492,6 +12664,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_Name
       value: EnemySpawner (8)
@@ -12628,6 +12804,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2176876021676840435, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
@@ -12848,6 +13028,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_Name
       value: EnemySpawner (7)
@@ -13062,6 +13246,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_Name
       value: EnemySpawner (6)
@@ -13122,6 +13310,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2176876021676840435, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
@@ -13190,6 +13382,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_Name
       value: BossAreaSpawner (7)
@@ -13254,6 +13450,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2176876021676840435, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
@@ -13550,6 +13750,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_Name
       value: BossAreaSpawner (31)
@@ -13616,6 +13820,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_Name
       value: BossAreaSpawner (3)
@@ -13680,6 +13888,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2176876021676840435, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
@@ -13976,6 +14188,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_Name
       value: BossAreaSpawner (13)
@@ -14042,6 +14258,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_Name
       value: BossAreaSpawner (35)
@@ -14106,6 +14326,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2176876021676840435, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
@@ -14326,6 +14550,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_Name
       value: BossAreaSpawner (8)
@@ -14392,6 +14620,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_Name
       value: BossAreaSpawner (39)
@@ -14456,6 +14688,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2176876021676840435, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
@@ -14598,6 +14834,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2176876021676840435, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
@@ -14818,6 +15058,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_Name
       value: BossAreaSpawner (12)
@@ -14960,6 +15204,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_Name
       value: BossAreaSpawner (33)
@@ -15024,6 +15272,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2176876021676840435, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5655123766950364242, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7666739720857881280, guid: e1c0ecb5c29da41dbb2c89e3af14c6e2, type: 3}

@@ -8,44 +8,19 @@ public class EnemySpawner : MonoBehaviour
     private bool spawning = false;
     private bool spawnBoss = false;
     private bool spawnEnemy = false;
+    private GameObject player;
 
     // Start is called before the first frame update
     void Start()
     {
         enemyManager = GameObject.Find("GameManager").GetComponent<EnemyManager>();
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
-
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            if (!spawning)
-            {
-                StartCoroutine(SpawnEnemy());
-            }
-        }
-
-        if (gameObject.tag == "BossSpawner" && other.gameObject.tag == "Player")
-        {
-            if (!spawning)
-            {
-                StartCoroutine(SpawnEnemy());
-            }
-        }
-
-        if (gameObject.tag == "BossAreaSpawner" && other.gameObject.tag == "Player")
-        {
-            if (!spawning)
-            {
-                StartCoroutine(SpawnEnemy());
-            }
-        }
+        CheckForEnemySpawn();
     }
 
     IEnumerator SpawnEnemy()
@@ -126,5 +101,16 @@ public class EnemySpawner : MonoBehaviour
             //Random.Range(bounds.min.y, bounds.max.y),
             Random.Range(bounds.min.z, bounds.max.z)
         );
+    }
+
+    public void CheckForEnemySpawn()
+    {
+        if (transform.position.x - player.transform.position.x < 10 && player.transform.position.x - transform.position.x < 10)
+        {
+            if (!spawning)
+            {
+                StartCoroutine(SpawnEnemy());
+            }
+        }
     }
 }
