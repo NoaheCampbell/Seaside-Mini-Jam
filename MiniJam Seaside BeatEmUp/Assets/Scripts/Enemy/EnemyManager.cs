@@ -5,8 +5,8 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
 
-    public int maxEnemies = 10;
-    public int maxBossAreaEnemies = 15;
+    public int maxEnemies = 15;
+    public int maxBossAreaEnemies = 20;
     public int bossAreaEnemies = 0;
     [System.NonSerialized] public int maxBosses = 1;
     [System.NonSerialized] public int bossCount = 0;

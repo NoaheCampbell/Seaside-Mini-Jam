@@ -44,7 +44,7 @@ public class BossController : MonoBehaviour
         {
             timeSinceLastDash += Time.deltaTime;
 
-            if (timeSinceLastDash > 10)
+            if (timeSinceLastDash > 5)
             {
                 recentlyDashed = false;
                 timeSinceLastDash = 0;
@@ -53,20 +53,15 @@ public class BossController : MonoBehaviour
 
     }
 
-    public void Dash(string direction)
+    public void Dash()
     {
         if (!recentlyDashed && bossMaster.isGrounded && canDash)
         {   
             Debug.Log("Dashing");
 
             // Start the jump animation
-            StartCoroutine(DashAnimation(direction));
+            StartCoroutine(DashAnimation());
         }
-    }
-
-    public void Spin()
-    {
-        StartCoroutine(SpinAnimation());
     }
 
     public void SpawnMinions()
@@ -74,73 +69,35 @@ public class BossController : MonoBehaviour
         // Spawn minions (not implemented)
     }
 
-    IEnumerator DashAnimation(string direction)
+    IEnumerator DashAnimation()
     {
         recentlyDashed = true;
         isDashing = true;
 
         // Makes the boss dash towards the player
-        var timerLeft = 50f;
+        var timerLeft = 40f;
 
         // Backs up a little bit before dashing forward
         boss.transform.position = Vector3.MoveTowards(boss.transform.position, boss.transform.position - boss.transform.forward, bossMaster.moveSpeed);
 
         bossMovement.canRotate = false;
 
-        if (direction == "forward")
+        while (timerLeft > 0)
         {
-            while (timerLeft > 0)
-            {
-            // Moves the boss forward in a dash, unless they get more than 20 units from the player
-            boss.transform.position = Vector3.MoveTowards(boss.transform.position, boss.transform.position + boss.transform.forward, bossMaster.dashSpeed);
+            // Moves the boss backwards in a dash while they are less than 40 units from the player
+            boss.transform.position = Vector3.MoveTowards(boss.transform.position, boss.transform.position - boss.transform.forward, bossMaster.dashSpeed);
             yield return new WaitForSeconds(0.01f);
 
-            if (bossMovement.targetDistance > 20)
+            if (bossMovement.targetDistance >= 40)
             {
                 bossMovement.canRotate = true;
                 yield break;
             }
 
-            timerLeft -= Time.deltaTime;
-            }
-        }
-
-        else if (direction == "backwards")
-        {
-            while (timerLeft > 0)
-            {
-                // Moves the boss backwards in a dash while they are less than 40 units from the player
-                boss.transform.position = Vector3.MoveTowards(boss.transform.position, boss.transform.position - boss.transform.forward, bossMaster.dashSpeed);
-                yield return new WaitForSeconds(0.01f);
-
-                if (bossMovement.targetDistance >= 40)
-                {
-                    bossMovement.canRotate = true;
-                    yield break;
-                }
-
-                timerLeft -= Time.deltaTime;
-            }
+            timerLeft -= 0.5f;
         }
 
         bossMovement.canRotate = true;
         isDashing = false;
     }
-
-    IEnumerator SpinAnimation()
-    {
-        // Makes the boss spin around for a few seconds
-        var timerLeft = 5f;
-        bossMovement.canRotate = false;
-
-        while (timerLeft > 0)
-        {
-            boss.transform.rotation = Quaternion.RotateTowards(boss.transform.rotation, Quaternion.Euler(0, boss.transform.rotation.y + 360, 0), bossMaster.rotationSpeed);
-            yield return new WaitForSeconds(0.01f);
-            timerLeft -= 0.5f;
-        }
-
-        bossMovement.canRotate = true;
-    }
-
 }

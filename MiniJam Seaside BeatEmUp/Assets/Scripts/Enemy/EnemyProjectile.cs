@@ -5,16 +5,14 @@ using UnityEngine;
 public class EnemyProjectile : MonoBehaviour
 {
     private EnemyMaster enemy;
-    public Rigidbody rb;
     private float timer;
 
-    [HideInInspector] public float damage = 1;
     public float projectileSpeed = 10;
 
     // Start is called before the first frame update
     void Start()
     {
-        enemy = GameObject.FindWithTag("Enemy").GetComponent<EnemyMaster>();
+        enemy = gameObject.GetComponent<EnemyMaster>();
         transform.position = GameObject.FindWithTag("EnemyProjectileSpawn").transform.position;
         transform.rotation = GameObject.Find("EnemyProjectileSpawn").transform.parent.rotation;
 

@@ -12,6 +12,8 @@ public class EnemyMovement : MonoBehaviour
     private EnemyAttacks enemyAttacks;
     private float timer;
     private EnemyMaster enemy;
+    private float rangedCooldown;
+    private EnemyHealth enemyHealth;
 
     // Start is called before the first frame update
     void Start()
@@ -19,13 +21,15 @@ public class EnemyMovement : MonoBehaviour
         enemyAttacks = GetComponent<EnemyAttacks>();
         timer = 0;
         enemy = GetComponent<EnemyMaster>();
+        rangedCooldown = 1f;
+        enemyHealth = GetComponent<EnemyHealth>();
     }
 
     // Update is called once per frame
     void Update()
     {
         // Sends out raycasts to determine if the player is near the enemy
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < 150; i++)
         {            
 
             RaycastHit hit;
@@ -61,6 +65,12 @@ public class EnemyMovement : MonoBehaviour
                 }
             }
         }
+
+        // If the enemy is more than 40 units away from the player, kill the enemy
+        if (distance > 40f)
+        {
+            enemyHealth.Death();
+        }
         
         // If playerIsHit is true, go through multiple checks to see how the enemy should move
         if (playerIsHit)
@@ -71,10 +81,10 @@ public class EnemyMovement : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, enemy.rotationSpeed);
 
             // Shoot the player whenever the cooldown is 0
-            if (enemy.rangeCooldown <= 0)
+            if (rangedCooldown <= 0)
             {
                 enemyAttacks.RangedAnimation();
-                enemy.rangeCooldown = 3f;
+                rangedCooldown = 3f;
             }
 
             // If the enemy is touching the player, deal damage to the player
@@ -87,7 +97,7 @@ public class EnemyMovement : MonoBehaviour
 
         // Adds to all the timers
         timer += Time.deltaTime;
-        enemy.rangeCooldown -= Time.deltaTime;
+        rangedCooldown -= Time.deltaTime;
 
     }
 }
