@@ -65,7 +65,7 @@ public class EnemySpawner : MonoBehaviour
             }
         }
 
-        else if (enemyManager.bossAreaEnemies < enemyManager.maxBossAreaEnemies && gameObject.tag == "BossAreaSpawner")
+        if (enemyManager.bossAreaEnemies < enemyManager.maxBossAreaEnemies && gameObject.tag == "BossAreaSpawner")
         {
             // get chance to spawn enemy
             int spawnInt = Random.Range(1, 101);
@@ -77,7 +77,7 @@ public class EnemySpawner : MonoBehaviour
             }
         }
 
-        else if (enemyManager.bossCount < enemyManager.maxBosses && gameObject.tag == "BossSpawner")
+        if (enemyManager.bossCount < enemyManager.maxBosses && gameObject.tag == "BossSpawner")
         {
             spawnBoss = true;
         }

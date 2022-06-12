@@ -37,7 +37,7 @@ public class EnemyProjectile : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         // If the projectile hits the player, deal damage to the player
-        if (collision.gameObject.tag == "HurtBox")
+        if (collision.gameObject.tag == "HurtBox" || collision.gameObject.tag == "Player" || collision.gameObject.transform.parent.gameObject.transform.parent.tag == "Player")
         {
             PlayerHealth player = GameObject.FindWithTag("Player").GetComponent(typeof(PlayerHealth)) as PlayerHealth;
             player.TakeDamage(enemy.rangedDmg);

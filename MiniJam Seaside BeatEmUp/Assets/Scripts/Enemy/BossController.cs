@@ -14,6 +14,7 @@ public class BossController : MonoBehaviour
     private float timeSinceLastDash;
     public bool isDashing;
     public bool canDash;
+    CollisionScript collisionScript;
 
     // Start is called before the first frame update
     void Start()
@@ -57,8 +58,6 @@ public class BossController : MonoBehaviour
     {
         if (!recentlyDashed && bossMaster.isGrounded && canDash)
         {   
-            Debug.Log("Dashing");
-
             // Start the jump animation
             StartCoroutine(DashAnimation());
         }
@@ -84,15 +83,9 @@ public class BossController : MonoBehaviour
 
         while (timerLeft > 0)
         {
-            // Moves the boss backwards in a dash while they are less than 40 units from the player
-            boss.transform.position = Vector3.MoveTowards(boss.transform.position, boss.transform.position - boss.transform.forward, bossMaster.dashSpeed);
+            // Moves the boss forwards
+            boss.transform.position = Vector3.MoveTowards(boss.transform.position, boss.transform.position + boss.transform.forward, bossMaster.dashSpeed);
             yield return new WaitForSeconds(0.01f);
-
-            if (bossMovement.targetDistance >= 40)
-            {
-                bossMovement.canRotate = true;
-                yield break;
-            }
 
             timerLeft -= 0.5f;
         }
