@@ -33,7 +33,7 @@ public class BossMovement : MonoBehaviour
 
        playerHitByRay = false;
  
-       boss.transform.position = new Vector3(boss.transform.position.x, 31, boss.transform.position.z);
+       boss.transform.position = new Vector3(boss.transform.position.x, 0.8f, boss.transform.position.z);
        
        if (boss.transform.rotation.x != 0 || boss.transform.rotation.z != 0)
        {
