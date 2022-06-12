@@ -5,13 +5,12 @@ using UnityEngine;
 public class EnemyAttacks : MonoBehaviour
 {
     private Vector3 targetPosition;
-    private float speed;
     public EnemyMaster enemy;
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        speed = 0.05f;
         enemy = gameObject.GetComponent<EnemyMaster>();
     }
 
@@ -21,30 +20,25 @@ public class EnemyAttacks : MonoBehaviour
 
     }
 
-    public void MeleeAnimation(Vector3 targetPos)
-    {
-        // Start the melee animation
-        targetPosition = targetPos;
-        StartCoroutine(Melee());
-    }
-
     public void RangedAnimation()
     {
         // Start the ranged animation
         StartCoroutine(Ranged());
     }
 
-     IEnumerator Melee()
+    public void DealDamage()
     {
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed);
-        yield return new WaitForSeconds(2f);
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, -speed);
+        // Deals damage to the player
+        PlayerHealth player = GameObject.FindWithTag("Player").GetComponent(typeof(PlayerHealth)) as PlayerHealth;
+        player.TakeDamage(enemy.meleeDmg);
     }
 
     IEnumerator Ranged()
     {
+        // Start the ranged animation
         Instantiate(enemy.projectile);
         yield return new WaitForSeconds(1f);
+
     }
 
 }

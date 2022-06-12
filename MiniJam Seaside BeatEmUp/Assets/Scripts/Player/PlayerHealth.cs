@@ -26,7 +26,7 @@ public class PlayerHealth : MonoBehaviour
     void CheckHealth()
     {
         //Debug.Log("Check Health");
-        if (player.health == 0)
+        if (player.health <= 0)
         {
             Death();
         }

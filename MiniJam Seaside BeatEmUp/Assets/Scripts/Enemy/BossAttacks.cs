@@ -131,17 +131,6 @@ public class BossAttacks : MonoBehaviour
         bossMovement.canMove = true;
     }
 
-    public void UltimateAttack()
-    {
-        if (!recentlyAttackedSpecial && !isAttacking)
-        {
-            StartCoroutine(UltimateAttackAnimation());
-            bossMovement.canMove = false;
-        }
-
-        bossMovement.canMove = true;
-    }
-
     IEnumerator Melee()
     {
         recentlyAttackedMelee = true;

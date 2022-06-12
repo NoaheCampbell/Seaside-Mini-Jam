@@ -13,7 +13,7 @@ public class EnemyMaster : MonoBehaviour
 
     // Holds all enemy information related to movement, direction, and the ability to attack
     [Header("Movement")]
-    public float moveSpeed = 2f;
+    public float moveSpeed = 0.001f;
     public bool isGrounded = true;
     public float gravForce = -1f; 
     public float jumpForce = 1f;   
@@ -23,14 +23,13 @@ public class EnemyMaster : MonoBehaviour
 
     // Holds all enemy information related to combat hitboxes, damage, and cooldowns
     [Header("Combat")]
-    public int meleeDmg = 5;
+    public int meleeDmg = 1;
     public float meleeDuration = 1f;
     public int rangedDmg = 1;
     public float rangeCooldown = 1f;
     public GameObject projectile;
     public string combatPreference;
-    public float meleeCooldown = 10f;
-    public float rangedCooldown = 10f;
+    public float rangedCooldown = 3f;
     public float specialCooldown = 25f;
 
     public void EnemyType(string tag)
@@ -40,7 +39,6 @@ public class EnemyMaster : MonoBehaviour
             moveSpeed = 5f;
             meleeDmg = 1;
             rangedDmg = 1;
-            rangeCooldown = 10f;
             canBeDamaged = false;
             jumpForce = 3f;
             speedWhileJumping = 10f;
