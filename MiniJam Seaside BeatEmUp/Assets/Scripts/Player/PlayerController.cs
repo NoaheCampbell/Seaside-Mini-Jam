@@ -39,50 +39,50 @@ public class PlayerController : MonoBehaviour
     #region Audio
 
     // sounds function
-    void PlaySounds()
-    {
-        if (moving)
-        {
-            // play move sound
-            player.movementSource.clip = player.jumpSound;
-            player.movementSource.gameObject.SetActive(true);
-        }
-        else
-        {
-            // player.movementSource.gameObject.SetActive(false);
-        }
+    // void PlaySounds()
+    // {
+    //     if (moving)
+    //     {
+    //         // play move sound
+    //         // player.movementSource.clip = player.jumpSound;
+    //         // player.movementSource.gameObject.SetActive(true);
+    //     }
+    //     else
+    //     {
+    //         // player.movementSource.gameObject.SetActive(false);
+    //     }
 
-        if (Input.GetButtonDown("Jump") && player.isGrounded)
-        {
-            // play jump sound
-            player.effectsSource.clip = player.jumpSound;
-            player.effectsSource.Play();
-        }
+    //     if (Input.GetButtonDown("Jump") && player.isGrounded)
+    //     {
+    //         // play jump sound
+    //         player.effectsSource.clip = player.jumpSound;
+    //         player.effectsSource.Play();
+    //     }
 
-        if (Input.GetButtonDown("Dash") && player.canMove && player.canDash)
-        {
-            // play dash sound
-            player.effectsSource.clip = player.jumpSound;
-            player.effectsSource.Play();
-        }
+    //     if (Input.GetButtonDown("Dash") && player.canMove && player.canDash)
+    //     {
+    //         // play dash sound
+    //         player.effectsSource.clip = player.jumpSound;
+    //         player.effectsSource.Play();
+    //     }
 
-        if (player.canAttack && !attacking && Input.GetButtonDown("Fire1"))
-        {
-            // play melee sound
-            player.effectsSource.clip = player.jumpSound;
-            player.effectsSource.Play();
-        }
+    //     if (player.canAttack && !attacking && Input.GetButtonDown("Fire1"))
+    //     {
+    //         // play melee sound
+    //         player.effectsSource.clip = player.jumpSound;
+    //         player.effectsSource.Play();
+    //     }
 
-        if (player.canAttack && !attacking && Input.GetButtonDown("Fire2") && !player.isRecharging)
-        {
-            // play ranged sound
-            player.effectsSource.clip = player.jumpSound;
-            player.effectsSource.Play();
-        }
+    //     if (player.canAttack && !attacking && Input.GetButtonDown("Fire2") && !player.isRecharging)
+    //     {
+    //         // play ranged sound
+    //         player.effectsSource.clip = player.jumpSound;
+    //         player.effectsSource.Play();
+    //     }
 
-        // play music 
-        //player.musicSource.Play();
-    }
+    //     // play music 
+    //     //player.musicSource.Play();
+    // }
 
     #endregion
 

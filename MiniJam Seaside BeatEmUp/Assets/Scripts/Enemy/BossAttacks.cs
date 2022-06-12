@@ -113,7 +113,6 @@ public class BossAttacks : MonoBehaviour
             bossMovement.canMove = false;
         }
 
-        bossMovement.canMove = true;
     }
 
     IEnumerator Melee()
@@ -139,7 +138,7 @@ public class BossAttacks : MonoBehaviour
         isAttacking = true;
 
         // Start the ranged animation
-        Instantiate(bossMaster.projectile);
+        Instantiate(bossMaster.projectile, boss.transform.position + boss.transform.forward, boss.transform.rotation);
         yield return new WaitForSeconds(1f);
 
         isAttacking = false;
@@ -147,7 +146,7 @@ public class BossAttacks : MonoBehaviour
 
     IEnumerator SpecialRanged()
     {
-        recentlyAttackedRanged = true;
+        recentlyAttackedSpecial = true;
         isAttacking = true;
         isUsingSpecial = true;
         bossController.canDash = false;
@@ -155,13 +154,14 @@ public class BossAttacks : MonoBehaviour
         // Start the special animation
         for (int i = 0; i < 15; i++)
         {
-            Instantiate(bossMaster.projectile);
+            Instantiate(bossMaster.projectile, boss.transform.position + boss.transform.forward * 5, boss.transform.rotation);
             yield return new WaitForSeconds(0.1f);
         }
 
         isUsingSpecial = false;
         isAttacking = false;
         bossController.canDash = true;
+        bossMovement.canMove = true;
     }
 
 }

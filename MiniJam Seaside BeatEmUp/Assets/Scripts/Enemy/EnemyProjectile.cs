@@ -41,9 +41,14 @@ public class EnemyProjectile : MonoBehaviour
         {
             PlayerHealth player = collision.gameObject.GetComponent(typeof(PlayerHealth)) as PlayerHealth;
             player.TakeDamage(enemy.rangedDmg);
+            // Destroy the projectile
+            Destroy(gameObject);
         }
 
-        // Destroy the projectile
-        Destroy(gameObject);
+        else if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Boss")
+        {
+            // Ignore the collision
+            Physics.IgnoreCollision(collision.collider, GetComponent<Collider>());
+        }
     }
 }

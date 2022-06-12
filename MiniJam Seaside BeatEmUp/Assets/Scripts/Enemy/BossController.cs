@@ -56,7 +56,8 @@ public class BossController : MonoBehaviour
     public void Dash(string direction)
     {
         if (!recentlyDashed && bossMaster.isGrounded && canDash)
-        {
+        {   
+            Debug.Log("Dashing");
 
             // Start the jump animation
             StartCoroutine(DashAnimation(direction));
@@ -134,7 +135,7 @@ public class BossController : MonoBehaviour
 
         while (timerLeft > 0)
         {
-            boss.transform.Rotate(0, 0.5f, 0);
+            boss.transform.rotation = Quaternion.RotateTowards(boss.transform.rotation, Quaternion.Euler(0, boss.transform.rotation.y + 360, 0), bossMaster.rotationSpeed);
             yield return new WaitForSeconds(0.01f);
             timerLeft -= 0.5f;
         }
