@@ -94,7 +94,8 @@ public class EnemyMovement : MonoBehaviour
             // If the enemy is touching the player, deal damage to the player
             if (distance <= 2f)
             {
-                enemyAttacks.DealDamage();
+                PlayerHealth player = GameObject.FindWithTag("Player").GetComponent(typeof(PlayerHealth)) as PlayerHealth;
+                player.TakeDamage(enemy.meleeDmg);
             }
         }
 
