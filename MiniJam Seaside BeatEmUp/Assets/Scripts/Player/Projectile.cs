@@ -14,10 +14,14 @@ public class Projectile : MonoBehaviour
     [HideInInspector] public float damage = 1;
     public float projectileSpeed = 1;
 
+    public GameObject projectileArt;
+    public GameObject projectileVertArt;
+
     private void Start()
     {
         player = GameObject.FindWithTag("Player").GetComponent<PlayerMaster>();
         transform.position = GameObject.FindWithTag("ProjectileSpawn").transform.position;
+        transform.localRotation = GameObject.FindWithTag("Player").GetComponent<PlayerMaster>().rotationObjs.transform.localRotation;
         gameObject.transform.parent = GameObject.FindWithTag("ProjectileParent").transform;
 
         rb = gameObject.GetComponent<Rigidbody>();
@@ -60,6 +64,9 @@ public class Projectile : MonoBehaviour
         {
             // shoot up
             direction = new Vector3(0, 0, 1);
+
+            projectileArt.SetActive(false);
+            projectileVertArt.SetActive(true);
         }
         else if (player.lookDirection == 0.5f)
         {
@@ -80,6 +87,9 @@ public class Projectile : MonoBehaviour
         {
             // shoot down
             direction = new Vector3(0, 0, -1);
+
+            projectileArt.SetActive(false);
+            projectileVertArt.SetActive(true);
         }
         else if (player.lookDirection == 2.5f)
         {
