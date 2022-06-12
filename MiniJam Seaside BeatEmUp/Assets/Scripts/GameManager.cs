@@ -61,6 +61,24 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void SetSound(bool effects, bool music)
+    {
+        if (effects)
+        {
+            GameObject.FindWithTag("EffectsAudio").GetComponent<AudioSource>().volume = effectsVolume;
+        }
+
+        if (music)
+        {
+            GameObject.FindWithTag("MusicAudio").GetComponent<AudioSource>().volume = musicVolume;
+        }
+    }
+
+    public void UpdateMovementVolume()
+    {
+        GameObject.FindWithTag("MovementAudio").GetComponent<AudioSource>().volume = effectsVolume;
+    }
+
     #endregion
 
     #region private functions
@@ -87,7 +105,7 @@ public class GameManager : MonoBehaviour
         LoadMainMenu();
     }
 
-    void LoadMainMenu()
+    public void LoadMainMenu()
     {
         SceneManager.LoadScene("Main Menu");
     }

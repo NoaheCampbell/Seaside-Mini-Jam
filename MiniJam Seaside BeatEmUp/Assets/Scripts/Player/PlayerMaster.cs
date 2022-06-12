@@ -51,7 +51,6 @@ public class PlayerMaster : MonoBehaviour
     [Header("Audio")]
     public AudioSource effectsSource;
     public AudioSource movementSource;
-    public AudioSource musicSource;
     public AudioClip moveSound;
     public AudioClip dashSound;
     public AudioClip jumpSound;

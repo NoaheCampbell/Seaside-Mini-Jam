@@ -70,6 +70,8 @@ public class UIManager : MonoBehaviour
     {
         GameObject.FindWithTag("GameManager").GetComponent<GameManager>().effectsVolume = _effectsVolume.value;
         GameObject.FindWithTag("GameManager").GetComponent<GameManager>().musicVolume = _musicVolume.value;
+
+        GameObject.FindWithTag("GameManager").GetComponent<GameManager>().SetSound(true, true);
     }
 
     #endregion 

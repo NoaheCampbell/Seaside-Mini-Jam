@@ -27,14 +27,14 @@ public class PlayerController : MonoBehaviour
     {
         if (!player.gameManager.gamePaused)
         {
+            PlaySounds();
+
             Move();
             Jump();
             Dash();
 
             MeleeAttack();
             RangedAttack();
-
-            // PlaySounds();
         }
 
         PauseGame();
@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
             player.gameManager.gamePaused = true;
 
             // bring up UI
-
+            gameObject.GetComponent<PlayerUI>().SettingsMenu();
         }
         else if (Input.GetButtonDown("Cancel") && player.gameManager.gamePaused)
         {
@@ -58,7 +58,21 @@ public class PlayerController : MonoBehaviour
             player.gameManager.gamePaused = false;
 
             // bring up UI
+            gameObject.GetComponent<PlayerUI>().CloseMenu();
+        }
+    }
 
+    // menu ui interaction
+    public void UnPauseGame()
+    {
+
+        if (player.gameManager.gamePaused)
+        {
+            // unpause game
+            player.gameManager.gamePaused = false;
+
+            // bring up UI
+            gameObject.GetComponent<PlayerUI>().CloseMenu();
         }
     }
 
@@ -74,10 +88,11 @@ public class PlayerController : MonoBehaviour
             // play move sound
             player.movementSource.clip = player.jumpSound;
             player.movementSource.gameObject.SetActive(true);
+            player.gameManager.UpdateMovementVolume();
         }
         else
         {
-            // player.movementSource.gameObject.SetActive(false);
+            player.movementSource.gameObject.SetActive(false);
         }
 
         if (Input.GetButtonDown("Jump") && player.isGrounded)
@@ -107,9 +122,6 @@ public class PlayerController : MonoBehaviour
             player.effectsSource.clip = player.jumpSound;
             player.effectsSource.Play();
         }
-
-        // play music 
-        //player.musicSource.Play();
     }
 
     #endregion

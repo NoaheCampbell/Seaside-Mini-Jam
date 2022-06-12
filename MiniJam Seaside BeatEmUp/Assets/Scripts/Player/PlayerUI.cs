@@ -21,6 +21,7 @@ public class PlayerUI : MonoBehaviour
 
     public void SettingsMenu()
     {
+        OpenSettings();
         player.settingsMenu.SetActive(true);
     }
 
@@ -39,5 +40,12 @@ public class PlayerUI : MonoBehaviour
     {
         GameObject.FindWithTag("GameManager").GetComponent<GameManager>().effectsVolume = player.effectsVolumeSlider.value;
         GameObject.FindWithTag("GameManager").GetComponent<GameManager>().musicVolume = player.musicVolumeSlider.value;
+
+        GameObject.FindWithTag("GameManager").GetComponent<GameManager>().SetSound(true, true);
+    }
+
+    public void ExitGame()
+    {
+        GameObject.FindWithTag("GameManager").GetComponent<GameManager>().LoadMainMenu();
     }
 }

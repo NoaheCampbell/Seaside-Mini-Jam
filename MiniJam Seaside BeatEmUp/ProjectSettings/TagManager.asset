@@ -11,6 +11,9 @@ TagManager:
   - Boss
   - EnemyProjectileSpawn
   - GameManager
+  - EffectsAudio
+  - MusicAudio
+  - MovementAudio
   layers:
   - Default
   - TransparentFX
