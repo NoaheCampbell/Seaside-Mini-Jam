@@ -11,10 +11,9 @@ TagManager:
   - Boss
   - EnemyProjectileSpawn
   - GameManager
-  - HurtBox
-  - BossSpawn
-  - BossSpawner
-  - BossAreaSpawner
+  - EffectsAudio
+  - MusicAudio
+  - MovementAudio
   layers:
   - Default
   - TransparentFX

@@ -15,4 +15,13 @@ public class EnemyManager : MonoBehaviour
 
     public GameObject bossPrefab;
     public List<GameObject> enemyPrefabs = new List<GameObject>();
+
+    private void Start()
+    {
+        enemyCount = 0;
+        bossCount = 0;
+
+        // level dependecies
+
+    }
 }

@@ -8,11 +8,11 @@ public class GameManager : MonoBehaviour
 {
     [Header("Game Manager Variables")]
     public bool gamePaused = false;
-    public int currentLevel = 1;
+    public int currentLevel = 0;
 
     [Header("Save Variables")]
     public int playerLives = 3;
-    [Range(0, 1)] public float effectVolume = .5f;
+    [Range(0, 1)] public float effectsVolume = .5f;
     [Range(0, 1)] public float musicVolume = .5f;
 
     void Awake()
@@ -35,9 +35,14 @@ public class GameManager : MonoBehaviour
 
     #region public functions
 
+    public void StartGame()
+    {
+        LoadNextLevel();
+    }
+
     public void LevelComplete()
     {
-
+        LoadNextLevel();
     }
 
     public void MovePlayer(Vector3 position)
@@ -46,14 +51,33 @@ public class GameManager : MonoBehaviour
     }
     public void RespawnPlayer()
     {
-        if (playerLives >= 0)
+        GameObject.FindWithTag("Player").GetComponent<PlayerUI>().UpdateLives();
+        if (playerLives > 0)
         {
             LoadCurrentLevel();
         }
         else
         {
-            GameOver();
+            StartCoroutine(GameOver());
         }
+    }
+
+    public void SetSound(bool effects, bool music)
+    {
+        if (effects)
+        {
+            GameObject.FindWithTag("EffectsAudio").GetComponent<AudioSource>().volume = effectsVolume;
+        }
+
+        if (music)
+        {
+            GameObject.FindWithTag("MusicAudio").GetComponent<AudioSource>().volume = musicVolume;
+        }
+    }
+
+    public void UpdateMovementVolume()
+    {
+        GameObject.FindWithTag("MovementAudio").GetComponent<AudioSource>().volume = effectsVolume;
     }
 
     #endregion
@@ -72,14 +96,27 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void GameOver()
+    IEnumerator GameOver()
     {
+        currentLevel = 0;
 
+        GameObject.FindWithTag("Player").GetComponent<PlayerUI>().GameOverScreen();
+
+        yield return new WaitForSeconds(3);
+
+        // load main menu
+        LoadMainMenu();
+    }
+
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene("Main Menu");
     }
 
     void LoadNextLevel()
     {
-        SceneManager.LoadScene("Level_" + (currentLevel+1).ToString());
+        currentLevel += 1;
+        SceneManager.LoadScene("Level_" + (currentLevel).ToString());
     }
 
     void LoadCurrentLevel()

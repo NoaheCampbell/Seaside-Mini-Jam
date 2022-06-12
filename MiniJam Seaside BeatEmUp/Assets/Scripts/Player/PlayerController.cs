@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 playerVelocity; // velocity up/down
     private Vector3 move;
 
-    private bool moving = false;
+    [System.NonSerialized] public bool moving = false;
     private bool attacking = false;
 
     // Start is called before the first frame update
@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
     {
         controller = gameObject.GetComponent<CharacterController>();
         player = gameObject.GetComponent<PlayerMaster>();
+
+        GameObject.FindWithTag("GameManager").GetComponent<GameManager>().SetSound(true, true);
     }
 
     // Update is called once per frame
@@ -27,14 +29,14 @@ public class PlayerController : MonoBehaviour
     {
         if (!player.gameManager.gamePaused)
         {
+            PlaySounds();
+
             Move();
             Jump();
             Dash();
 
             MeleeAttack();
             RangedAttack();
-
-            // PlaySounds();
         }
 
         PauseGame();
@@ -50,7 +52,7 @@ public class PlayerController : MonoBehaviour
             player.gameManager.gamePaused = true;
 
             // bring up UI
-
+            gameObject.GetComponent<PlayerUI>().SettingsMenu();
         }
         else if (Input.GetButtonDown("Cancel") && player.gameManager.gamePaused)
         {
@@ -58,7 +60,21 @@ public class PlayerController : MonoBehaviour
             player.gameManager.gamePaused = false;
 
             // bring up UI
+            gameObject.GetComponent<PlayerUI>().CloseMenu();
+        }
+    }
 
+    // menu ui interaction
+    public void UnPauseGame()
+    {
+
+        if (player.gameManager.gamePaused)
+        {
+            // unpause game
+            player.gameManager.gamePaused = false;
+
+            // bring up UI
+            gameObject.GetComponent<PlayerUI>().CloseMenu();
         }
     }
 
@@ -67,50 +83,48 @@ public class PlayerController : MonoBehaviour
     #region Audio
 
     // sounds function
-    // void PlaySounds()
-    // {
-    //     if (moving)
-    //     {
-    //         // play move sound
-    //         // player.movementSource.clip = player.jumpSound;
-    //         // player.movementSource.gameObject.SetActive(true);
-    //     }
-    //     else
-    //     {
-    //         // player.movementSource.gameObject.SetActive(false);
-    //     }
+    void PlaySounds()
+    {
+        if (moving)
+        {
+            // play move sound
+            player.movementSource.clip = player.jumpSound;
+            player.movementSource.gameObject.SetActive(true);
+            player.gameManager.UpdateMovementVolume();
+        }
+        else
+        {
+            player.movementSource.gameObject.SetActive(false);
+        }
 
-    //     if (Input.GetButtonDown("Jump") && player.isGrounded)
-    //     {
-    //         // play jump sound
-    //         player.effectsSource.clip = player.jumpSound;
-    //         player.effectsSource.Play();
-    //     }
+        if (Input.GetButtonDown("Jump") && player.isGrounded)
+        {
+            // play jump sound
+            player.effectsSource.clip = player.jumpSound;
+            player.effectsSource.Play();
+        }
 
-    //     if (Input.GetButtonDown("Dash") && player.canMove && player.canDash)
-    //     {
-    //         // play dash sound
-    //         player.effectsSource.clip = player.jumpSound;
-    //         player.effectsSource.Play();
-    //     }
+        if (Input.GetButtonDown("Dash") && player.canMove && player.canDash)
+        {
+            // play dash sound
+            player.effectsSource.clip = player.jumpSound;
+            player.effectsSource.Play();
+        }
 
-    //     if (player.canAttack && !attacking && Input.GetButtonDown("Fire1"))
-    //     {
-    //         // play melee sound
-    //         player.effectsSource.clip = player.jumpSound;
-    //         player.effectsSource.Play();
-    //     }
+        if (player.canAttack && !attacking && Input.GetButtonDown("Fire1"))
+        {
+            // play melee sound
+            player.effectsSource.clip = player.jumpSound;
+            player.effectsSource.Play();
+        }
 
-    //     if (player.canAttack && !attacking && Input.GetButtonDown("Fire2") && !player.isRecharging)
-    //     {
-    //         // play ranged sound
-    //         player.effectsSource.clip = player.jumpSound;
-    //         player.effectsSource.Play();
-    //     }
-
-    //     // play music 
-    //     //player.musicSource.Play();
-    // }
+        if (player.canAttack && !attacking && Input.GetButtonDown("Fire2") && !player.isRecharging)
+        {
+            // play ranged sound
+            player.effectsSource.clip = player.jumpSound;
+            player.effectsSource.Play();
+        }
+    }
 
     #endregion
 
@@ -136,6 +150,7 @@ public class PlayerController : MonoBehaviour
 
         // animation
         player.rotationObjs.transform.Translate(Vector3.right * 0.5f);
+        player.playerArt.transform.position = player.rotationObjs.transform.position;
 
         player.meleeHitbox.SetActive(true);
 
@@ -145,6 +160,7 @@ public class PlayerController : MonoBehaviour
 
         // animation
         player.rotationObjs.transform.Translate(Vector3.right * -0.5f);
+        player.playerArt.transform.position = player.rotationObjs.transform.position;
 
         player.canMove = true;
         attacking = false;
