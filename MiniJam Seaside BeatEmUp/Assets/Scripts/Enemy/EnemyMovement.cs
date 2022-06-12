@@ -50,17 +50,32 @@ public class EnemyMovement : MonoBehaviour
             if (hitSomething)
                 objectTag = hit.transform.gameObject.tag;
 
-            if (hitSomething && objectTag == "Player")
+            if (hitSomething)
             {
-                // If the raycast hits the player, rotate towards the ray's rotation
-                targetRotation = Quaternion.LookRotation(hit.point - transform.position);
+                if (objectTag == "Player")
+                {
+                     // If the raycast hits the player, rotate towards the ray's rotation
+                    targetRotation = Quaternion.LookRotation(hit.point - transform.position);
 
-                // Gets the distance to the player and its position
-                distance = Vector3.Distance(transform.position, hit.point);
-                targetPosition = hit.collider.gameObject.transform.position;
+                    // Gets the distance to the player and its position
+                    distance = Vector3.Distance(transform.position, hit.point);
+                    targetPosition = hit.collider.gameObject.transform.position;
 
-                // Turns playerIsHit to true for the rest of the loop
-                playerIsHit = true;
+                    // Turns playerIsHit to true for the rest of the loop
+                    playerIsHit = true;
+                }
+                // else if (objectTag == "Spawner")
+                // {
+                //     // Keep the raycast going
+                //     var hitPosition = hit.point;
+                //     var distanceTravelled = Vector3.Distance(transform.position, hitPosition);
+                //     var remainingDistance = 100 - distanceTravelled;
+
+                //     if (remainingDistance > 0)
+                //     {
+                //         Physics.Raycast(transform.position, rayDirection, out hit, remainingDistance);
+                //     }
+                // }
             }
             else
             {

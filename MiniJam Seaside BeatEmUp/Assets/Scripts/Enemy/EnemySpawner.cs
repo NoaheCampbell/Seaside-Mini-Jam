@@ -8,22 +8,35 @@ public class EnemySpawner : MonoBehaviour
     private bool spawning = false;
     private bool spawnEnemy = false;
     public float spawnChance = 30; // chance to spawn enemy per second
+    public GameObject player;
 
     // Start is called before the first frame update
     void Start()
     {
         enemyManager = GameObject.Find("GameManager").GetComponent<EnemyManager>();
+        player = GameObject.FindWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        CheckForEnemySpawn();
     }
 
-    private void OnTriggerStay(Collider other)
+    // private void OnTriggerStay(Collider other)
+    // {
+    //     if (other.gameObject.tag == "Player")
+    //     {
+    //         if (!spawning)
+    //         {
+    //             StartCoroutine(SpawnEnemy());
+    //         }
+    //     }
+    // }
+
+    public void CheckForEnemySpawn()
     {
-        if (other.gameObject.tag == "Player")
+        if (transform.position.x - player.transform.position.x < 10 && player.transform.position.x - transform.position.x < 10)
         {
             if (!spawning)
             {

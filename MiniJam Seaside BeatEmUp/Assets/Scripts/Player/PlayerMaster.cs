@@ -37,13 +37,13 @@ public class PlayerMaster : MonoBehaviour
     [Header("Audio")]
     [Range(0,1)] public float effectVolume = .5f;
     [Range(0,1)] public float musicVolume = .5f;
-    public AudioSource effectsSource;
-    public AudioSource movementSource;
-    public AudioSource musicSource;
-    public AudioClip moveSound;
-    public AudioClip dashSound;
-    public AudioClip jumpSound;
-    public AudioClip meleeSound;
-    public AudioClip rangeSound;
-    public AudioClip hurtSound;
+    // public AudioSource effectsSource;
+    // public AudioSource movementSource;
+    // public AudioSource musicSource;
+    // public AudioClip moveSound;
+    // public AudioClip dashSound;
+    // public AudioClip jumpSound;
+    // public AudioClip meleeSound;
+    // public AudioClip rangeSound;
+    // public AudioClip hurtSound;
 }

@@ -12,6 +12,7 @@ public class EnemyAttacks : MonoBehaviour
     void Start()
     {
         speed = 0.05f;
+        enemy = gameObject.GetComponent<EnemyMaster>();
     }
 
     // Update is called once per frame

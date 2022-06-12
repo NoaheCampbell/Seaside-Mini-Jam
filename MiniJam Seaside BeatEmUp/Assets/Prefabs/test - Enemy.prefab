@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6337361057001390677}
   - component: {fileID: 6337361057001390674}
   - component: {fileID: 6337361057001390680}
+  - component: {fileID: 6963526172672655213}
   m_Layer: 0
   m_Name: test - Enemy
   m_TagString: Enemy
@@ -99,11 +100,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ae3642cb6f13452a844660eae7dc005, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 0.01
+  speed: 0.05
   playerIsHit: 0
   distance: 0
   attackDuration: 0
-  recentlyAttacked: 0
+  recentlyAttackedMelee: 0
+  recentlyAttackedRanged: 0
 --- !u!143 &6337361057001390677
 CharacterController:
   m_ObjectHideFlags: 0
@@ -134,6 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41e37b180c7fd41b2a74cafe142c54ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy: {fileID: 0}
 --- !u!114 &6337361057001390680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,3 +151,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 1
   health: 1
+--- !u!114 &6963526172672655213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6337361057001390675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18ed52495864946929c4d7c6acf3735b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHp: 1
+  health: 1
+  canBeDamaged: 1
+  moveSpeed: 2
+  isGrounded: 1
+  gravForce: -1
+  dashSpeed: 0
+  rotationSpeed: 30
+  meleeDmg: 5
+  meleeDuration: 1
+  rangedDmg: 1
+  rangeCooldown: 1
+  projectile: {fileID: 864788804335236612, guid: ee31e83ebce82488b88de52a4184e2f3, type: 3}
+  combatPreference: 
+  meleeCooldown: 10
+  rangedCooldown: 10
+  specialCooldown: 25
+  meleeDistance: 3
+  minRangeDistance: 5
+  maxRangeDistance: 10
