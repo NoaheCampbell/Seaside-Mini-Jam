@@ -104,12 +104,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eca619e90a9a49328dc03461fc4d6d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aoe: {fileID: 0}
   recentlyAttackedSpecial: 0
-  recentlyAttackedUltimate: 0
   isUsingSpecial: 0
   isAttacking: 0
-  isUsingUltimate: 0
 --- !u!114 &7043493121952822354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,9 +119,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a4bf569b9dcf4d7fbf8d0623aef2a2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recentlyJumped: 0
   recentlyDashed: 0
   isDashing: 0
+  canDash: 0
 --- !u!114 &7043493121952822365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,8 +173,6 @@ MonoBehaviour:
   moveSpeed: 2
   isGrounded: 1
   gravForce: -9.81
-  jumpForce: 1
-  speedWhileJumping: 4
   dashSpeed: 0
   rotationSpeed: 5
   meleeDmg: 5
@@ -185,12 +180,13 @@ MonoBehaviour:
   rangedDmg: 1
   rangeCooldown: 1
   projectile: {fileID: 864788804335236612, guid: ee31e83ebce82488b88de52a4184e2f3, type: 3}
-  ultimateAOE: {fileID: 2048821502961668221, guid: af1e193a62b354830a0cdc34d428638f, type: 3}
   combatPreference: 
   meleeCooldown: 10
   rangedCooldown: 10
   specialCooldown: 25
-  ultimateCooldown: 40
+  meleeDistance: 3
+  minRangeDistance: 5
+  maxRangeDistance: 10
 --- !u!54 &7043493121952822359
 Rigidbody:
   m_ObjectHideFlags: 0
