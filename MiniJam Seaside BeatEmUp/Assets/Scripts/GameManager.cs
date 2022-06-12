@@ -51,7 +51,8 @@ public class GameManager : MonoBehaviour
     }
     public void RespawnPlayer()
     {
-        if (playerLives >= 0)
+        GameObject.FindWithTag("Player").GetComponent<PlayerUI>().UpdateLives();
+        if (playerLives > 0)
         {
             LoadCurrentLevel();
         }
@@ -98,6 +99,8 @@ public class GameManager : MonoBehaviour
     IEnumerator GameOver()
     {
         currentLevel = 0;
+
+        GameObject.FindWithTag("Player").GetComponent<PlayerUI>().GameOverScreen();
 
         yield return new WaitForSeconds(3);
 

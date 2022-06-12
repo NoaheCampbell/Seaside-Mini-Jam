@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
     {
         controller = gameObject.GetComponent<CharacterController>();
         player = gameObject.GetComponent<PlayerMaster>();
+
+        GameObject.FindWithTag("GameManager").GetComponent<GameManager>().SetSound(true, true);
     }
 
     // Update is called once per frame

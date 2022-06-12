@@ -12,11 +12,13 @@ public class PlayerUI : MonoBehaviour
         player = gameObject.GetComponent<PlayerMaster>();
 
         OpenSettings();
+
+        UpdateLives();
     }
 
     public void GameOverScreen()
     {
-        player.gameOverScreen.SetActive(true);
+        player.gameOverText.SetActive(true);
     }
 
     public void SettingsMenu()
@@ -47,5 +49,10 @@ public class PlayerUI : MonoBehaviour
     public void ExitGame()
     {
         GameObject.FindWithTag("GameManager").GetComponent<GameManager>().LoadMainMenu();
+    }
+
+    public void UpdateLives()
+    {
+        player.livesText.text = "Lives: " + player.gameManager.playerLives;
     }
 }

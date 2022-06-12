@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerMaster : MonoBehaviour
 {
@@ -40,8 +41,9 @@ public class PlayerMaster : MonoBehaviour
     [System.NonSerialized] public bool isRecharging = false; //  recharhing ranged attack (reload)
 
     [Header("UI")]
-    public GameObject gameOverScreen;
+    public GameObject gameOverText;
     public GameObject settingsMenu;
+    public TextMeshProUGUI livesText;
     public Slider effectsVolumeSlider;
     public Slider musicVolumeSlider;
 
