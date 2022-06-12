@@ -32,11 +32,16 @@ public class BossMovement : MonoBehaviour
     {
         playerHitByRay = false;
 
+        boss.transform.position = new Vector3(boss.transform.position.x, 31, boss.transform.position.z);
+        boss.transform.rotation = new Quaternion(0, boss.transform.rotation.y , 0, boss.transform.rotation.w);
+
+        
+
         // Sends out raycasts to see where the player is
         for (int i = 0; i < 150; i++)
         {
             RaycastHit hit;
-            Vector3 rayDirection = new Vector3(Random.Range(-1f, 1f), Random.Range(-0.7f, 0.7f), Random.Range(-1f, 1f));
+            Vector3 rayDirection = new Vector3(Random.Range(-1f, 1f), Random.Range(-0.3f, 0.3f), Random.Range(-1f, 1f));
             bool hitSomething = Physics.Raycast(transform.position, rayDirection, out hit, 100f);
 
             if (hitSomething)
@@ -51,12 +56,6 @@ public class BossMovement : MonoBehaviour
                     targetDistance = Vector3.Distance(transform.position, hit.point);
                     targetPosition = hit.collider.gameObject.transform.position;
                 }
-
-                else if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Ground"))
-                {
-                    // Ignore the collision and the raycast keeps going
-                    Physics.IgnoreCollision(hit.collider, gameObject.GetComponent<Collider>());
-                }
             }
         }
 
@@ -68,22 +67,15 @@ public class BossMovement : MonoBehaviour
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * boss.rotationSpeed);
             }
 
-            // If the player is more than 30 units away, jump towards the player and use a ranged attack
-            if (targetDistance > 30)
-            {
-                bossController.Jump();
-                boss.transform.position = Vector3.MoveTowards(boss.transform.position, targetPosition, boss.speedWhileJumping * Time.deltaTime);
-            }
-
-            // If the player is less than 10 units away, dash forward and use a melee attack
+            // If the player is less than 10 units away, dash backwards and spawn minions
             else if (targetDistance < 10)
             {
-                bossController.Dash();
-                boss.transform.position = Vector3.MoveTowards(boss.transform.position, targetPosition, boss.dashSpeed * Time.deltaTime);
+                bossController.Dash("backwards");
+                bossController.SpawnMinions();
             }
 
-            // If the player is between 10 and 15 units away, launch a special ranged attack
-            else if (targetDistance > 10 && targetDistance < 15)
+            // If the player is under 25 units away, launch a special ranged attack
+            else if (targetDistance < 25)
             {
                 bossAttacks.LaunchSpecialRangedAttack();
             }
@@ -94,32 +86,16 @@ public class BossMovement : MonoBehaviour
                 bossController.Spin();
             }
 
-            // If a random number is under some number, launch an ultimate attack (nonfunctional)
-            // float randomNumber = Random.Range(0, 100);
-            // if (randomNumber < 0.005f)
-            // {
-            //     bossAttacks.UltimateAttack();
-            // }
-
             // If the boss hits the player, deal damage to the player
             else if (targetDistance < 2)
             {
                 player.TakeDamage(boss.meleeDmg);
             }
 
-            // If the player is more than 50 units away, move closer
-            if (targetDistance > 50)
+            // If the player is more than 40 units away, move closer
+            if (targetDistance > 40)
             {
                 boss.transform.position = Vector3.MoveTowards(boss.transform.position, targetPosition, boss.moveSpeed * Time.deltaTime);
-            }
-
-            // If the boss is looking at the player and the player is less than 20 units away, use a ranged attack
-            var bossDirection = Vector3.Normalize(targetPosition - transform.position);
-            float dot = Vector3.Dot(boss.transform.forward, bossDirection);
-
-            if (dot > 0.9f && targetDistance < 20)
-            {
-                bossAttacks.RangedAttack();
             }
 
             // If the boss is within 10 units of the player, move forward and use a melee attack
@@ -128,17 +104,6 @@ public class BossMovement : MonoBehaviour
                 boss.transform.position = Vector3.MoveTowards(boss.transform.position, targetPosition, boss.moveSpeed * Time.deltaTime);
                 bossAttacks.MeleeAttack();
             }
-
-            // If the player is looking at the boss and is closer than 5 units, jump up and back away
-            Vector3 playerForward = GameObject.FindGameObjectWithTag("Player").transform.forward;
-            var playerDirection = Vector3.Normalize(playerForward - transform.position);
-            dot = Vector3.Dot(boss.transform.forward, playerDirection);
-
-            if (dot > 0.9f && targetDistance < 5)
-            {
-                bossController.Jump();
-                boss.transform.position = Vector3.MoveTowards(boss.transform.position, targetPosition, boss.speedWhileJumping * Time.deltaTime);
-            }
         }
-    } 
+    }
 }

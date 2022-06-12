@@ -8,19 +8,15 @@ public class BossAttacks : MonoBehaviour
     private GameObject boss;
     private BossController bossController;
     private BossMovement bossMovement;
-    public UltimateAOE aoe;
     private bool recentlyAttackedMelee;
     private bool recentlyAttackedRanged;
     private float timer;
     private float timeSinceLastMeleeAttack;
     private float timeSinceLastRangedAttack;
     private float timeSinceLastSpecial;
-    private float timeSinceLastUltimate;
     public bool recentlyAttackedSpecial;
-    public bool recentlyAttackedUltimate;
     public bool isUsingSpecial;
     public bool isAttacking;
-    public bool isUsingUltimate;
 
     // Start is called before the first frame update
     void Start()
@@ -38,8 +34,6 @@ public class BossAttacks : MonoBehaviour
         timeSinceLastSpecial = 0;
         isUsingSpecial = false;
         isAttacking = false;
-        isUsingUltimate = false;
-        timeSinceLastUltimate = 0;
     }
 
     // Update is called once per frame
@@ -49,20 +43,6 @@ public class BossAttacks : MonoBehaviour
 
         CheckAttackCooldowns();
 
-        if (aoe != null)
-        {
-            if (aoe.active)
-            {
-                bossMovement.canMove = false;
-
-                StartCoroutine(DestroyAOE());
-
-            }
-            else
-            {
-                bossMovement.canMove = true;
-            }
-        }
     }
 
     public void CheckAttackCooldowns()
@@ -99,17 +79,6 @@ public class BossAttacks : MonoBehaviour
                 timeSinceLastSpecial = 0;
             }
         }
-
-        if (recentlyAttackedUltimate)
-        {
-            timeSinceLastUltimate += Time.deltaTime;
-
-            if (timeSinceLastUltimate > 40)
-            {
-                recentlyAttackedUltimate = false;
-                timeSinceLastUltimate = 0;
-            }
-        }
     }
 
     public void MeleeAttack()
@@ -141,17 +110,6 @@ public class BossAttacks : MonoBehaviour
         if (!recentlyAttackedSpecial && !isAttacking)
         {
             StartCoroutine(SpecialRanged());
-            bossMovement.canMove = false;
-        }
-
-        bossMovement.canMove = true;
-    }
-
-    public void UltimateAttack()
-    {
-        if (!recentlyAttackedSpecial && !isAttacking)
-        {
-            StartCoroutine(UltimateAttackAnimation());
             bossMovement.canMove = false;
         }
 
@@ -192,6 +150,7 @@ public class BossAttacks : MonoBehaviour
         recentlyAttackedRanged = true;
         isAttacking = true;
         isUsingSpecial = true;
+        bossController.canDash = false;
 
         // Start the special animation
         for (int i = 0; i < 15; i++)
@@ -202,30 +161,7 @@ public class BossAttacks : MonoBehaviour
 
         isUsingSpecial = false;
         isAttacking = false;
+        bossController.canDash = true;
     }
 
-    IEnumerator UltimateAttackAnimation()
-    {
-        recentlyAttackedUltimate = true;
-        isAttacking = true;
-        isUsingUltimate = true;
-
-        // Start the special animation
-        bossController.Jump();
-        yield return new WaitForSeconds(1f);
-
-        bossController.Dash();
-        yield return new WaitForSeconds(1f);
-
-
-        isUsingUltimate = false;
-        isAttacking = false;
-    }
-
-    IEnumerator DestroyAOE()
-    {
-        yield return new WaitForSeconds(5f);
-        aoe.active = false;
-    }
-        
 }
