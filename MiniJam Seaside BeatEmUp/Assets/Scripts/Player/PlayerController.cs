@@ -25,16 +25,44 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
-        Jump();
-        Dash();
+        if (!player.gameManager.gamePaused)
+        {
+            Move();
+            Jump();
+            Dash();
 
-        MeleeAttack();
-        RangedAttack();
+            MeleeAttack();
+            RangedAttack();
 
-        // PlaySounds();
+            // PlaySounds();
+        }
+
+        PauseGame();
     }
 
+    #region UI
+
+    void PauseGame()
+    {
+        if (Input.GetButtonDown("Cancel") && !player.gameManager.gamePaused)
+        {
+            // pause game 
+            player.gameManager.gamePaused = true;
+
+            // bring up UI
+
+        }
+        else if (Input.GetButtonDown("Cancel") && player.gameManager.gamePaused)
+        {
+            // unpause game
+            player.gameManager.gamePaused = false;
+
+            // bring up UI
+
+        }
+    }
+
+    #endregion
 
     #region Audio
 
@@ -147,7 +175,6 @@ public class PlayerController : MonoBehaviour
     }
 
     #endregion
-
 
     #region Movement
 

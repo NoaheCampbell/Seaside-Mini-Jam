@@ -125,6 +125,7 @@ MonoBehaviour:
   recentlyJumped: 0
   recentlyDashed: 0
   isDashing: 0
+  isJumping: 0
 --- !u!114 &7043493121952822365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 274fb5f83ef9f49fa89ad639e484486f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundCheck: {fileID: 0}
+  groundCheck: {fileID: 300215229966637295}
   groundMask:
     serializedVersion: 2
     m_Bits: 8
@@ -247,7 +248,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4781029719722622528}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.00000012262012, y: 0, z: 0}
+  m_LocalPosition: {x: -0.00000012262012, y: -0.01, z: 0}
   m_LocalScale: {x: 1.0325415, y: 1.0492079, z: 1.1071078}
   m_ConstrainProportionsScale: 0
   m_Children: []

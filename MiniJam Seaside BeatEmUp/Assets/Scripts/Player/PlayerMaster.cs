@@ -7,6 +7,8 @@ public class PlayerMaster : MonoBehaviour
     // this script holds all modifiable character variables
     // since everything is dead in one hit, no need for floats as hp and damage
 
+    public GameManager gameManager;
+
     [Header("Health")]
     public int lives = 3;
     public int maxHp = 1;

@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour
+public class BossSpawner : MonoBehaviour
 {
     private EnemyManager enemyManager;
     private bool spawning = false;
     private bool spawnEnemy = false;
+
+    public Transform bossSpawn;
 
     // Start is called before the first frame update
     void Start()
@@ -26,56 +28,39 @@ public class EnemySpawner : MonoBehaviour
         {
             if (!spawning)
             {
-                StartCoroutine(SpawnEnemy());
+                StartCoroutine(SpawnBoss());
             }
         }
     }
 
-    IEnumerator SpawnEnemy()
+    IEnumerator SpawnBoss()
     {
         spawning = true;
 
         // check if enemies are allowed
-        if (enemyManager.enemyCount < enemyManager.maxEnemies)
+        if (enemyManager.bossCount < enemyManager.maxBosses)
         {
-            // get chance to spawn enemy
-            int spawnInt = Random.Range(1, 101);
-
-            // if selected set bool
-            if (enemyManager.spawnChance >= spawnInt && enemyManager.spawnChance > 0)
-            {
-                spawnEnemy = true;
-            }
+             spawnEnemy = true;
         }
 
         yield return new WaitForSeconds(1);
 
         if (spawnEnemy)
         {
+            Debug.Log("Spawn Boss");
             // instantiate random enemy from list of prefabs
             Instantiate(
-                enemyManager.enemyPrefabs[Random.Range(0, enemyManager.enemyPrefabs.Count)], 
-                RandomPointInBounds(gameObject.GetComponent<Collider>().bounds), 
-                Quaternion.identity, 
+                enemyManager.bossPrefab,
+                bossSpawn.position,
+                Quaternion.identity,
                 GameObject.Find("EnemyParent").transform
                 );
 
             // add to enemy count
-            enemyManager.enemyCount += 1;
+            enemyManager.bossCount += 1;
         }
 
         spawnEnemy = false;
         spawning = false;
-    }
-
-    // get spawn location
-    static Vector3 RandomPointInBounds(Bounds bounds)
-    {
-        return new Vector3(
-            Random.Range(bounds.min.x, bounds.max.x),
-            1,
-            //Random.Range(bounds.min.y, bounds.max.y),
-            Random.Range(bounds.min.z, bounds.max.z)
-        );
     }
 }
