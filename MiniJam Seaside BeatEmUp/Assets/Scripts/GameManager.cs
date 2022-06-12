@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -8,11 +10,21 @@ public class GameManager : MonoBehaviour
     public bool gamePaused = false;
     public int currentLevel = 1;
 
+    [Header("Save Variables")]
+    public int playerLives = 3;
+    [Range(0, 1)] public float effectVolume = .5f;
+    [Range(0, 1)] public float musicVolume = .5f;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("GameManager");
+
+        if (objs.Length > 1)
+        {
+            Destroy(this.gameObject);
+        }
+
+        DontDestroyOnLoad(this.gameObject);
     }
 
     // Update is called once per frame
@@ -26,6 +38,22 @@ public class GameManager : MonoBehaviour
     public void LevelComplete()
     {
 
+    }
+
+    public void MovePlayer(Vector3 position)
+    {
+        GameObject.FindWithTag("Player").transform.position = position;
+    }
+    public void RespawnPlayer()
+    {
+        if (playerLives >= 0)
+        {
+            LoadCurrentLevel();
+        }
+        else
+        {
+            GameOver();
+        }
     }
 
     #endregion
@@ -44,19 +72,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void LoadNextLevel()
+    void GameOver()
     {
 
+    }
+
+    void LoadNextLevel()
+    {
+        SceneManager.LoadScene("Level_" + (currentLevel+1).ToString());
     }
 
     void LoadCurrentLevel()
     {
-
-    }
-
-    void RespawnPlayer()
-    {
-
+        //SceneManager.LoadScene("Level_" + currentLevel.ToString()); 
+        SceneManager.LoadScene("PlayerMovementTest");
     }
 
     #endregion

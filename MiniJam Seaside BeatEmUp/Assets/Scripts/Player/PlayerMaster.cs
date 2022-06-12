@@ -7,12 +7,14 @@ public class PlayerMaster : MonoBehaviour
     // this script holds all modifiable character variables
     // since everything is dead in one hit, no need for floats as hp and damage
 
-    public GameManager gameManager;
+    [System.NonSerialized] public GameManager gameManager;
 
     [Header("Health")]
-    public int lives = 3;
     public int maxHp = 1;
     public int health = 1;
+
+    [Header("Art")]
+    public GameObject playerArt;
 
     [Header("Movement")]
     public float moveSpeed = 5f;
@@ -37,8 +39,6 @@ public class PlayerMaster : MonoBehaviour
     [System.NonSerialized] public bool isRecharging = false; //  recharhing ranged attack (reload)
 
     [Header("Audio")]
-    [Range(0,1)] public float effectVolume = .5f;
-    [Range(0,1)] public float musicVolume = .5f;
     public AudioSource effectsSource;
     public AudioSource movementSource;
     public AudioSource musicSource;
@@ -48,4 +48,9 @@ public class PlayerMaster : MonoBehaviour
     public AudioClip meleeSound;
     public AudioClip rangeSound;
     public AudioClip hurtSound;
+
+    private void Start()
+    {
+        gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
+    }
 }

@@ -8,6 +8,9 @@ TagManager:
   - ProjectileSpawn
   - Enemy
   - BreakableObj
+  - Boss
+  - EnemyProjectileSpawn
+  - GameManager
   layers:
   - Default
   - TransparentFX
