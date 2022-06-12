@@ -48,11 +48,15 @@ public class PlayerUI : MonoBehaviour
 
     public void ExitGame()
     {
+        GameObject.FindWithTag("GameManager").GetComponent<GameManager>().currentLevel = 0;
+        GameObject.FindWithTag("GameManager").GetComponent<GameManager>().playerLives = 3;
+        GameObject.FindWithTag("GameManager").GetComponent<GameManager>().gamePaused = false;
         GameObject.FindWithTag("GameManager").GetComponent<GameManager>().LoadMainMenu();
     }
 
     public void UpdateLives()
     {
-        player.livesText.text = "Lives: " + player.gameManager.playerLives;
+        //player.livesText.text = "Lives: " + player.gameManager.playerLives;
+        player.livesText.text = "Lives: " + GameObject.FindWithTag("GameManager").GetComponent<GameManager>().playerLives;
     }
 }

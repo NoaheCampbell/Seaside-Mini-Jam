@@ -104,6 +104,8 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(3);
 
+        playerLives = 3;
+
         // load main menu
         LoadMainMenu();
     }
@@ -121,8 +123,8 @@ public class GameManager : MonoBehaviour
 
     void LoadCurrentLevel()
     {
-        //SceneManager.LoadScene("Level_" + currentLevel.ToString()); 
-        SceneManager.LoadScene("PlayerMovementTest");
+        SceneManager.LoadScene("Level_" + currentLevel.ToString()); 
+        //SceneManager.LoadScene("PlayerMovementTest");
     }
 
     #endregion

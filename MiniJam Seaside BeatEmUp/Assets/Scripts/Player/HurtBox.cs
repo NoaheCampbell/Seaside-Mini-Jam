@@ -14,7 +14,7 @@ public class HurtBox : MonoBehaviour
         playerHealth = GameObject.FindWithTag("Player").GetComponent<PlayerHealth>();   
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.tag == "Enemy")
         {
