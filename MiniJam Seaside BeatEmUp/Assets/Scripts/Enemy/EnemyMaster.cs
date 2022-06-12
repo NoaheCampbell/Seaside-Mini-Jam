@@ -46,7 +46,7 @@ public class EnemyMaster : MonoBehaviour
             canBeDamaged = false;
             jumpForce = 3f;
             speedWhileJumping = 10f;
-            dashSpeed = 7f;
+            dashSpeed = 5f;
         }
         
     }
