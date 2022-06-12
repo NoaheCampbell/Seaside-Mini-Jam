@@ -1005,7 +1005,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -18}
-  m_SizeDelta: {x: 1100, y: 50}
+  m_SizeDelta: {x: 1500, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &311961434
 MonoBehaviour:
@@ -1027,7 +1027,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Cyan (Itch.io: seanmburns).............Art'
+  m_text: 'Cyan (Itch.io: seanmburns)..........................................Art'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 95c38a078d797e5408bc9b8bf47599e5, type: 2}
   m_sharedMaterial: {fileID: 626710793766903045, guid: 95c38a078d797e5408bc9b8bf47599e5, type: 2}
@@ -2115,7 +2115,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -218}
-  m_SizeDelta: {x: 1100, y: 50}
+  m_SizeDelta: {x: 1500, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &707689273
 MonoBehaviour:
@@ -2137,7 +2137,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Neverdusk (Itch.io: seanmburns)...Music'
+  m_text: "Neverdusk (Itch.io: neverdusk)...................................Music\n                  
+    (SoundCloud: neverdusk)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 95c38a078d797e5408bc9b8bf47599e5, type: 2}
   m_sharedMaterial: {fileID: 626710793766903045, guid: 95c38a078d797e5408bc9b8bf47599e5, type: 2}
@@ -3408,7 +3409,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 82}
-  m_SizeDelta: {x: 1100, y: 50}
+  m_SizeDelta: {x: 1500, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1019164312
 MonoBehaviour:
@@ -3430,7 +3431,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Maxer (Itch.io: seanmburns)..........Programming'
+  m_text: 'MaxerReckham (Itch.io: MaxerRackham)..................Programming'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 95c38a078d797e5408bc9b8bf47599e5, type: 2}
   m_sharedMaterial: {fileID: 626710793766903045, guid: 95c38a078d797e5408bc9b8bf47599e5, type: 2}
@@ -3684,7 +3685,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 6b0ef2cbeba2b24448554f1d1116af12, type: 3}
+  m_audioClip: {fileID: 8300000, guid: daa7951142877dd43bf7c4aa32480073, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.5
   m_Pitch: 1
@@ -4288,7 +4289,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -118}
-  m_SizeDelta: {x: 1100, y: 50}
+  m_SizeDelta: {x: 1500, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1527375933
 MonoBehaviour:
@@ -4310,7 +4311,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Yolli (Itch.io: seanmburns)..............Art'
+  m_text: 'Yollie (Itch.io: seanmburns).........................................Art'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 95c38a078d797e5408bc9b8bf47599e5, type: 2}
   m_sharedMaterial: {fileID: 626710793766903045, guid: 95c38a078d797e5408bc9b8bf47599e5, type: 2}
@@ -5014,7 +5015,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 182}
-  m_SizeDelta: {x: 1100, y: 50}
+  m_SizeDelta: {x: 1500, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1695618551
 MonoBehaviour:
@@ -5036,7 +5037,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Sean (Itch.io: seanmburns).............Programming'
+  m_text: 'Sean (Itch.io: seanmburns)..........................................Programming'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 95c38a078d797e5408bc9b8bf47599e5, type: 2}
   m_sharedMaterial: {fileID: 626710793766903045, guid: 95c38a078d797e5408bc9b8bf47599e5, type: 2}
@@ -5282,7 +5283,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1743954846
 RectTransform:
   m_ObjectHideFlags: 0
