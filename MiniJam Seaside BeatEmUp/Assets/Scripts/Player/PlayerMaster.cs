@@ -45,6 +45,9 @@ public class PlayerMaster : MonoBehaviour
     public Slider effectsVolumeSlider;
     public Slider musicVolumeSlider;
 
+    [Header("Animation")]
+    public Animator movementAnimator;
+
     [Header("Audio")]
     public AudioSource effectsSource;
     public AudioSource movementSource;

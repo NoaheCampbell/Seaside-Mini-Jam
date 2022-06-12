@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 playerVelocity; // velocity up/down
     private Vector3 move;
 
-    private bool moving = false;
+    [System.NonSerialized] public bool moving = false;
     private bool attacking = false;
 
     // Start is called before the first frame update
@@ -136,6 +136,7 @@ public class PlayerController : MonoBehaviour
 
         // animation
         player.rotationObjs.transform.Translate(Vector3.right * 0.5f);
+        player.playerArt.transform.position = player.rotationObjs.transform.position;
 
         player.meleeHitbox.SetActive(true);
 
@@ -145,6 +146,7 @@ public class PlayerController : MonoBehaviour
 
         // animation
         player.rotationObjs.transform.Translate(Vector3.right * -0.5f);
+        player.playerArt.transform.position = player.rotationObjs.transform.position;
 
         player.canMove = true;
         attacking = false;
