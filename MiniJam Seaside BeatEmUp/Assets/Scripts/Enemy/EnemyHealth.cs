@@ -30,14 +30,14 @@ public class EnemyHealth : MonoBehaviour
     // function to check player health
     void CheckHealth()
     {
-        if (health == 0)
+        if (health <= 0)
         {
             Death();
         }
     }
 
     // function to die
-    void Death()
+    public void Death()
     {
         // update enemy count
         GameObject.Find("GameManager").GetComponent<EnemyManager>().enemyCount -= 1;

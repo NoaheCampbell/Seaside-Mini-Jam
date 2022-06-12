@@ -10,13 +10,12 @@ public class BossAttacks : MonoBehaviour
     private BossMovement bossMovement;
     private bool recentlyAttackedMelee;
     private bool recentlyAttackedRanged;
-    private float timer;
     private float timeSinceLastMeleeAttack;
     private float timeSinceLastRangedAttack;
     private float timeSinceLastSpecial;
     public bool recentlyAttackedSpecial;
     public bool isUsingSpecial;
-    public bool isAttacking;
+    private float specialCooldown;
 
     // Start is called before the first frame update
     void Start()
@@ -28,62 +27,65 @@ public class BossAttacks : MonoBehaviour
         recentlyAttackedMelee = false;
         recentlyAttackedRanged = false;
         recentlyAttackedSpecial = false;
-        timer = 0;
         timeSinceLastMeleeAttack = 0;
         timeSinceLastRangedAttack = 0;
         timeSinceLastSpecial = 0;
         isUsingSpecial = false;
-        isAttacking = false;
+        specialCooldown = 10f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
-
         CheckAttackCooldowns();
-
     }
 
     public void CheckAttackCooldowns()
     {
         if (recentlyAttackedMelee)
         {
-            timeSinceLastMeleeAttack += Time.deltaTime;
-
-            if (timeSinceLastMeleeAttack > 10)
+            if (timeSinceLastMeleeAttack >= bossMovement.meleeCooldown)
             {
                 recentlyAttackedMelee = false;
                 timeSinceLastMeleeAttack = 0;
+            }
+            else
+            {
+                timeSinceLastMeleeAttack += Time.deltaTime;
             }
         }
 
         if (recentlyAttackedRanged)
         {
-            timeSinceLastRangedAttack += Time.deltaTime;
-
-            if (timeSinceLastRangedAttack > 10)
+            if (timeSinceLastRangedAttack >= bossMovement.rangedCooldown)
             {
                 recentlyAttackedRanged = false;
                 timeSinceLastRangedAttack = 0;
+            }
+            else
+            {
+                timeSinceLastRangedAttack += Time.deltaTime;
             }
         }
 
         if (recentlyAttackedSpecial)
         {
-            timeSinceLastSpecial += Time.deltaTime;
-
-            if (timeSinceLastSpecial > 25)
+            if (timeSinceLastSpecial >= specialCooldown)
             {
                 recentlyAttackedSpecial = false;
                 timeSinceLastSpecial = 0;
             }
+            else
+            {
+                timeSinceLastSpecial += Time.deltaTime;
+            }
         }
-    }
+
+        }
 
     public void MeleeAttack()
     {
-        if (!recentlyAttackedMelee && !isAttacking)
+        if (!recentlyAttackedMelee)
         {
            StartCoroutine(Melee());
            bossMovement.canMove = false;
@@ -95,7 +97,7 @@ public class BossAttacks : MonoBehaviour
 
     public void RangedAttack()
     {
-        if (!recentlyAttackedRanged && !isAttacking)
+        if (!recentlyAttackedRanged)
         {
             StartCoroutine(Ranged());
             bossMovement.canMove = false;
@@ -107,7 +109,7 @@ public class BossAttacks : MonoBehaviour
 
     public void LaunchSpecialRangedAttack()
     {
-        if (!recentlyAttackedSpecial && !isAttacking)
+        if (!recentlyAttackedSpecial)
         {
             StartCoroutine(SpecialRanged());
             bossMovement.canMove = false;
@@ -118,7 +120,6 @@ public class BossAttacks : MonoBehaviour
     IEnumerator Melee()
     {
         recentlyAttackedMelee = true;
-        isAttacking = true;
 
         // Start the melee animation
 
@@ -128,26 +129,21 @@ public class BossAttacks : MonoBehaviour
             yield return new WaitForSeconds(2f);
             boss.transform.position = Vector3.MoveTowards(boss.transform.position, boss.transform.position - boss.transform.forward, 0.05f);
         }
-
-        isAttacking = false;
     }
 
     IEnumerator Ranged()
     {
         recentlyAttackedRanged = true;
-        isAttacking = true;
 
         // Start the ranged animation
         Instantiate(bossMaster.projectile, boss.transform.position + boss.transform.forward, boss.transform.rotation);
         yield return new WaitForSeconds(1f);
 
-        isAttacking = false;
     }
 
     IEnumerator SpecialRanged()
     {
         recentlyAttackedSpecial = true;
-        isAttacking = true;
         isUsingSpecial = true;
         bossController.canDash = false;
 
@@ -159,9 +155,7 @@ public class BossAttacks : MonoBehaviour
         }
 
         isUsingSpecial = false;
-        isAttacking = false;
         bossController.canDash = true;
         bossMovement.canMove = true;
     }
-
 }

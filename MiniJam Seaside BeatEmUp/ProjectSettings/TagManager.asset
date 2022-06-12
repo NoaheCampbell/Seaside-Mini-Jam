@@ -8,6 +8,13 @@ TagManager:
   - ProjectileSpawn
   - Enemy
   - BreakableObj
+  - Boss
+  - EnemyProjectileSpawn
+  - GameManager
+  - HurtBox
+  - BossSpawn
+  - BossSpawner
+  - BossAreaSpawner
   layers:
   - Default
   - TransparentFX

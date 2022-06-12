@@ -5,10 +5,8 @@ using UnityEngine;
 public class EnemyProjectile : MonoBehaviour
 {
     private EnemyMaster enemy;
-    public Rigidbody rb;
     private float timer;
 
-    [HideInInspector] public float damage = 1;
     public float projectileSpeed = 10;
 
     // Start is called before the first frame update
@@ -17,9 +15,11 @@ public class EnemyProjectile : MonoBehaviour
         enemy = gameObject.GetComponent<EnemyMaster>();
         transform.position = GameObject.FindWithTag("EnemyProjectileSpawn").transform.position;
         transform.rotation = GameObject.Find("EnemyProjectileSpawn").transform.parent.rotation;
+
+        transform.position = transform.position + transform.forward * 2f;
+
         gameObject.transform.parent = GameObject.FindWithTag("ProjectileParent").transform;
         timer = 10f;
-
     }
 
     // Update is called once per frame
@@ -37,18 +37,12 @@ public class EnemyProjectile : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         // If the projectile hits the player, deal damage to the player
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "HurtBox" || collision.gameObject.tag == "Player" || collision.gameObject.transform.parent.gameObject.transform.parent.tag == "Player")
         {
-            PlayerHealth player = collision.gameObject.GetComponent(typeof(PlayerHealth)) as PlayerHealth;
+            PlayerHealth player = GameObject.FindWithTag("Player").GetComponent(typeof(PlayerHealth)) as PlayerHealth;
             player.TakeDamage(enemy.rangedDmg);
-            // Destroy the projectile
-            Destroy(gameObject);
-        }
 
-        else if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Boss")
-        {
-            // Ignore the collision
-            Physics.IgnoreCollision(collision.collider, GetComponent<Collider>());
+            Destroy(gameObject);
         }
     }
 }

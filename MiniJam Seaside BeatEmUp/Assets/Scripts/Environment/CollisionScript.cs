@@ -16,7 +16,7 @@ public class CollisionScript : MonoBehaviour
         
     }
 
-    void OnCollisionEnter(Collision collision)
+    public void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Player")
         {

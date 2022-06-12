@@ -6,37 +6,40 @@ public class EnemySpawner : MonoBehaviour
 {
     private EnemyManager enemyManager;
     private bool spawning = false;
+    private bool spawnBoss = false;
     private bool spawnEnemy = false;
-    public float spawnChance = 30; // chance to spawn enemy per second
-    public GameObject player;
 
     // Start is called before the first frame update
     void Start()
     {
         enemyManager = GameObject.Find("GameManager").GetComponent<EnemyManager>();
-        player = GameObject.FindWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
-        CheckForEnemySpawn();
+
     }
 
-    // private void OnTriggerStay(Collider other)
-    // {
-    //     if (other.gameObject.tag == "Player")
-    //     {
-    //         if (!spawning)
-    //         {
-    //             StartCoroutine(SpawnEnemy());
-    //         }
-    //     }
-    // }
-
-    public void CheckForEnemySpawn()
+    private void OnTriggerStay(Collider other)
     {
-        if (transform.position.x - player.transform.position.x < 10 && player.transform.position.x - transform.position.x < 10)
+        if (other.gameObject.tag == "Player")
+        {
+            if (!spawning)
+            {
+                StartCoroutine(SpawnEnemy());
+            }
+        }
+
+        if (gameObject.tag == "BossSpawner" && other.gameObject.tag == "Player")
+        {
+            if (!spawning)
+            {
+                StartCoroutine(SpawnEnemy());
+            }
+        }
+
+        if (gameObject.tag == "BossAreaSpawner" && other.gameObject.tag == "Player")
         {
             if (!spawning)
             {
@@ -50,16 +53,33 @@ public class EnemySpawner : MonoBehaviour
         spawning = true;
 
         // check if enemies are allowed
-        if (enemyManager.enemyCount < enemyManager.maxEnemies)
+        if (enemyManager.enemyCount < enemyManager.maxEnemies && gameObject.tag != "BossAreaSpawner")
         {
             // get chance to spawn enemy
             int spawnInt = Random.Range(1, 101);
 
             // if selected set bool
-            if (spawnChance >= spawnInt && spawnChance > 0)
+            if (enemyManager.spawnChance >= spawnInt && enemyManager.spawnChance > 0)
             {
                 spawnEnemy = true;
             }
+        }
+
+        if (enemyManager.bossAreaEnemies < enemyManager.maxBossAreaEnemies && gameObject.tag == "BossAreaSpawner")
+        {
+            // get chance to spawn enemy
+            int spawnInt = Random.Range(1, 101);
+
+            // if selected set bool
+            if (enemyManager.spawnChance >= spawnInt && enemyManager.spawnChance > 0)
+            {
+                spawnEnemy = true;
+            }
+        }
+
+        if (enemyManager.bossCount < enemyManager.maxBosses && gameObject.tag == "BossSpawner")
+        {
+            spawnBoss = true;
         }
 
         yield return new WaitForSeconds(1);
@@ -78,7 +98,22 @@ public class EnemySpawner : MonoBehaviour
             enemyManager.enemyCount += 1;
         }
 
+        if (spawnBoss)
+        {
+            // instantiate random enemy from list of prefabs
+            Instantiate(
+                enemyManager.bossPrefab, 
+                GameObject.Find("BossSpawn").transform.position, 
+                Quaternion.identity, 
+                GameObject.Find("EnemyParent").transform
+                );
+
+            // add to enemy count
+            enemyManager.bossCount += 1;
+        }
+
         spawnEnemy = false;
+        spawnBoss = false;
         spawning = false;
     }
 
