@@ -43,7 +43,8 @@ public class EnemyAttacks : MonoBehaviour
 
     IEnumerator Ranged()
     {
-        Instantiate(enemy.projectile);
+        Debug.Log("Ranged");
+        Instantiate(enemy.projectile, gameObject.transform);
         yield return new WaitForSeconds(1f);
     }
 

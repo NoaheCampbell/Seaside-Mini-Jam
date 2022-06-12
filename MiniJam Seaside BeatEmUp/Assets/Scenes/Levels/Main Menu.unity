@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.4439403, g: 0.4931519, b: 0.5722083, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3431,7 +3431,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'MaxerReckham (Itch.io: MaxerRackham)..................Programming'
+  m_text: 'MaxerRackham (Itch.io: MaxerRackham)..................Programming'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 95c38a078d797e5408bc9b8bf47599e5, type: 2}
   m_sharedMaterial: {fileID: 626710793766903045, guid: 95c38a078d797e5408bc9b8bf47599e5, type: 2}

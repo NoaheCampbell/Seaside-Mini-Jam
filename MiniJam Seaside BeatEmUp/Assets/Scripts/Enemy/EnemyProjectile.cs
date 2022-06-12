@@ -4,19 +4,17 @@ using UnityEngine;
 
 public class EnemyProjectile : MonoBehaviour
 {
-    private EnemyMaster enemy;
     private float timer;
-
+    private int rangeDmg;
     public float projectileSpeed = 10;
 
     // Start is called before the first frame update
     void Start()
     {
-        enemy = gameObject.GetComponent<EnemyMaster>();
-        transform.position = GameObject.FindWithTag("EnemyProjectileSpawn").transform.position;
-        transform.rotation = GameObject.Find("EnemyProjectileSpawn").transform.parent.rotation;
+        rangeDmg = 1;
 
-        transform.position = transform.position + transform.forward * 2f;
+        transform.position = gameObject.transform.parent.transform.position;
+        transform.rotation = gameObject.transform.parent.transform.rotation;
 
         gameObject.transform.parent = GameObject.FindWithTag("ProjectileParent").transform;
         timer = 10f;
@@ -40,9 +38,14 @@ public class EnemyProjectile : MonoBehaviour
         if (collision.gameObject.tag == "HurtBox" || collision.gameObject.tag == "Player" || collision.gameObject.transform.parent.gameObject.transform.parent.tag == "Player")
         {
             PlayerHealth player = GameObject.FindWithTag("Player").GetComponent(typeof(PlayerHealth)) as PlayerHealth;
-            player.TakeDamage(enemy.rangedDmg);
+            player.TakeDamage(rangeDmg);
 
             Destroy(gameObject);
+        }
+
+        else if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Boss")
+        {
+            Physics.IgnoreCollision(collision.collider, GetComponent<Collider>());
         }
     }
 }

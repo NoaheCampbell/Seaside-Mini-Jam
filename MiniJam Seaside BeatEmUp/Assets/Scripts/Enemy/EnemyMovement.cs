@@ -12,7 +12,7 @@ public class EnemyMovement : MonoBehaviour
     private EnemyAttacks enemyAttacks;
     private float timer;
     private EnemyMaster enemy;
-    private float rangedCooldown;
+    public float rangedCooldown;
     private EnemyHealth enemyHealth;
 
     // Start is called before the first frame update
