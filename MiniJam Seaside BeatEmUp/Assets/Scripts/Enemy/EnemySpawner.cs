@@ -95,12 +95,24 @@ public class EnemySpawner : MonoBehaviour
     // get spawn location
     static Vector3 RandomPointInBounds(Bounds bounds)
     {
-        return new Vector3(
-            Random.Range(bounds.min.x, bounds.max.x),
-            1,
-            //Random.Range(bounds.min.y, bounds.max.y),
-            Random.Range(bounds.min.z, bounds.max.z)
-        );
+        var randomPos = new Vector3(Random.Range(bounds.min.x, bounds.max.x), 1, Random.Range(bounds.min.z, bounds.max.z));
+
+        var playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
+        
+        for (int i = 0; i < 20; i++)
+        {
+            if (Mathf.Abs(playerPos.x - randomPos.x) < 2 || Mathf.Abs(playerPos.z - randomPos.z) < 2)
+            {
+                randomPos = new Vector3(Random.Range(bounds.min.x, bounds.max.x), 1, Random.Range(bounds.min.z, bounds.max.z));
+            }
+
+            else
+            {
+                break;
+            }
+        }
+
+        return randomPos;
     }
 
     public void CheckForEnemySpawn()
