@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
         if (moving)
         {
             // play move sound
-            player.movementSource.clip = player.jumpSound;
+            player.movementSource.clip = player.moveSound;
             player.movementSource.gameObject.SetActive(true);
             player.gameManager.UpdateMovementVolume();
         }
@@ -107,21 +107,21 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Dash") && player.canMove && player.canDash)
         {
             // play dash sound
-            player.effectsSource.clip = player.jumpSound;
+            player.effectsSource.clip = player.dashSound;
             player.effectsSource.Play();
         }
 
         if (player.canAttack && !attacking && Input.GetButtonDown("Fire1"))
         {
             // play melee sound
-            player.effectsSource.clip = player.jumpSound;
+            player.effectsSource.clip = player.meleeSound;
             player.effectsSource.Play();
         }
 
         if (player.canAttack && !attacking && Input.GetButtonDown("Fire2") && !player.isRecharging)
         {
             // play ranged sound
-            player.effectsSource.clip = player.jumpSound;
+            player.effectsSource.clip = player.rangeSound;
             player.effectsSource.Play();
         }
     }

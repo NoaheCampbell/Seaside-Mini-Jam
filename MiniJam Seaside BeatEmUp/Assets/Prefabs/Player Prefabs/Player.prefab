@@ -2309,12 +2309,12 @@ MonoBehaviour:
   movementAnimator: {fileID: 3678835767803890206}
   effectsSource: {fileID: 3678835768025405689}
   movementSource: {fileID: 3678835768754145729}
-  moveSound: {fileID: 8300000, guid: 875212114539210419c9c0a5fba31c89, type: 3}
+  moveSound: {fileID: 8300000, guid: 18788f163608be041ba3ed19a38c58bd, type: 3}
   dashSound: {fileID: 8300000, guid: 875212114539210419c9c0a5fba31c89, type: 3}
   jumpSound: {fileID: 8300000, guid: 875212114539210419c9c0a5fba31c89, type: 3}
-  meleeSound: {fileID: 8300000, guid: 875212114539210419c9c0a5fba31c89, type: 3}
-  rangeSound: {fileID: 8300000, guid: 875212114539210419c9c0a5fba31c89, type: 3}
-  hurtSound: {fileID: 8300000, guid: 875212114539210419c9c0a5fba31c89, type: 3}
+  meleeSound: {fileID: 8300000, guid: 6ae4209b5f9f2a0499f2bcc4fef76845, type: 3}
+  rangeSound: {fileID: 8300000, guid: 27e541f59d15f37439739ded22a878c7, type: 3}
+  hurtSound: {fileID: 8300000, guid: 27e541f59d15f37439739ded22a878c7, type: 3}
 --- !u!114 &3678835767876867803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3633,7 +3633,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 18788f163608be041ba3ed19a38c58bd, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.5
   m_Pitch: 1
